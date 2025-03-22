@@ -5,7 +5,7 @@
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 h1 {
@@ -40,6 +40,7 @@ header {
     margin: 20px;
     border: 1px solid black;
     background: linear-gradient(135deg, var(--type1-color) 50%, var(--type2-color) 50%);
+    cursor: pointer;
 
     header {
         display: flex;
@@ -51,4 +52,24 @@ header {
             width: 30%;
         }
     }
+}
+
+#pokemon-overlay {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.pokemon-details {
+    width: 300px;
+    height: 400px;
+    border: 1px solid black;
 }

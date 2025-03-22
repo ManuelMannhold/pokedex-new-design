@@ -89,7 +89,7 @@ function displayPokemon() {
 
   for (let i = 0; i < pokemon.length; i++) {
     content.innerHTML += `
-            <div class="pokemon-card">
+            <div class="pokemon-card" onclick="openPokemonDetails(${i})">
               <header>
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
@@ -110,4 +110,38 @@ function displayPokemon() {
             </div>
         `;
   }
+}
+
+function openPokemonDetails(i) {
+  let container = document.getElementById("pokemon-overlay");
+  container.classList.remove("d-none");
+
+  container.innerHTML = `
+    <div class="pokemon-details">
+    <span onclick="closeOverlay()">X</span>
+              <header>
+              <h2>${pokemonData[i].name}</h2>
+              <h3>#${pokemonData[i].id}</h3>
+              <img src="${
+                pokemonData[i].sprites.other.dream_world.front_default
+              }">
+              <span>
+                ${getPokemonTypes(i)}
+              </span>
+              <span><button onclick="getPokemonCries(${i})">Schrei</button></span>
+              </header>
+                <div class="pokemon-info">
+                  <span>
+                    Gewicht = ${pokemonData[i].weight / 10} Kg
+                    Größe = ${pokemonData[i].height * 10} cm
+                  </span>
+                </div>
+            </div>
+        `;
+}
+
+function closeOverlay() {
+  let container = document.getElementById("pokemon-overlay");
+
+  container.classList.add("d-none");
 }
