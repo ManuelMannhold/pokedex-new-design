@@ -91,8 +91,8 @@ function displayPokemon() {
     content.innerHTML += `
             <div class="pokemon-card">
               <header>
-              ${pokemonData[i].name}
-              #${pokemonData[i].id}
+              <h2>${pokemonData[i].name}</h2>
+              <h3>#${pokemonData[i].id}</h3>
               <img src="${
                 pokemonData[i].sprites.other.dream_world.front_default
               }">
