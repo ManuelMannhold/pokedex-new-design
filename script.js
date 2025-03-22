@@ -28,6 +28,7 @@ async function init() {
   await fetchPokemon();
   await fetchPokemonDetails();
   displayPokemon();
+  setTimeout(setPokemonCardBackground, 100);
 }
 
 async function fetchPokemon(offset, limit) {
@@ -67,14 +68,24 @@ function getPokemonTypes(i) {
   return pokeTypes;
 }
 
-function setPokemonCardBackground(types) {
-  let type1 = types[0];
-  let type2 = types[1] || types[0];
+function setPokemonCardBackground() {
+  let cards = document.querySelectorAll(".pokemon-card"); // Alle Karten holen
 
-  let color1 = typeColors[type1] || "#A8A878";
-  let color2 = typeColors[type2] || "#A8A878";
+  for (let i = 0; i < pokemonData.length; i++) {
+    let card = cards[i]; // Richtige Karte holen
+    if (!card) continue; // Falls keine Karte gefunden wird, weitermachen
 
-  return `linear-gradient(135deg, ${color1} 50%, ${color2} 50%)`;
+    let types = pokemonData[i].types;
+    if (!types.length) continue;
+
+    let type1 = types[0].type.name;
+    let type2 = types[1] ? types[1].type.name : type1;
+
+    let color1 = typeColors[type1] || "#A8A878";
+    let color2 = typeColors[type2] || "#A8A878";
+
+    card.style.background = `linear-gradient(135deg, ${color1} 50%, ${color2} 50%)`;
+  }
 }
 
 function getPokemonCries(i) {
@@ -118,7 +129,7 @@ function openPokemonDetails(i) {
 
   container.innerHTML = `
     <div class="pokemon-details">
-    <span onclick="closeOverlay()">X</span>
+    <span class="close-overlay" onclick="closeOverlay()">X</span>
               <header>
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
