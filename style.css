@@ -9,14 +9,21 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #ff0000, #ffffff);
-    background-size: 100% 200%;
-    transition: background 0.5s ease;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assests/img/pokemon-1624022_1280.jpg');
+    background-size: auto;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-position 0.5s ease;
 }
 
 h1 {
     font-size: 48px;
     color: red;
+    text-shadow: 1px 1px 2px white;
+}
+
+h2 {
+    text-shadow: 1px 1px 2px white;
 }
 
 .close-overlay {
