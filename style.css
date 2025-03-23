@@ -8,6 +8,12 @@
     display: none !important;
 }
 
+body {
+    background: linear-gradient(to bottom, #ff0000, #ffffff);
+    background-size: 100% 200%;
+    transition: background 0.5s ease;
+}
+
 h1 {
     font-size: 48px;
     color: red;
@@ -30,6 +36,7 @@ header {
 #content {
     width: 100%;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     padding: 10px;
 }

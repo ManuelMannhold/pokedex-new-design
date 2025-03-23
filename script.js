@@ -84,6 +84,13 @@ async function loadMore() {
   displayPokemon();
 }
 
+function updateBackground() {
+  let totalPokemon = pokemon.length;
+  let gradientPosition = Math.min(100, totalPokemon * 2); // Limitiert auf max. 100%
+
+  document.body.style.background = `linear-gradient(to bottom, #ff0000 ${gradientPosition}%, #ffffff)`;
+}
+
 function setPokemonCardBackground() {
   let cards = document.querySelectorAll(".pokemon-card"); // Alle Karten holen
 
