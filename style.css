@@ -78,6 +78,10 @@ header {
     border: 1px solid black;
 }
 
+.load-more-input {
+    width: 100%;
+}
+
 .fire {
     background: linear-gradient(45deg, #ff4500, #ff6347);
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><text x="10" y="40" font-size="40" font-weight="bold" fill="rgba(255,255,255,0.1)">🔥🔥🔥</text></svg>');
@@ -106,4 +110,61 @@ header {
     background: linear-gradient(45deg, #b8a038, #d1c17d);
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><polygon points="20,20 80,50 50,80" fill="rgba(255,255,255,0.1)"/><polygon points="100,100 150,120 120,150" fill="rgba(255,255,255,0.1)"/></svg>');
     background-size: 80px;
+}
+
+#loading-spiner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokeball {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at center, #fff 40%, white 40%);
+    border: 5px solid black;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    animation: spin 1s linear infinite;
+
+}
+
+.pokeball::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: red;
+    top: 0;
+}
+
+.pokeball::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 5px solid black;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -18,6 +18,13 @@
             <label for="input-pokemon"></label>
             <input type="text" id="input-pokemon">
             <button id="button-search-pokemon">Suchen</button>
+            <div class="load-more-input">
+                Lade
+                <input id="input-pokemons" type="number" min="1" max="1302"
+                    placeholder="Zahl zwischen 1 und 1282 eingeben...">
+                <button id="button-load-more" onclick="loadMore()">Laden</button>
+                mehr
+            </div>
         </form>
     </header>
     <section>
@@ -27,8 +34,9 @@
             <div id="pokemon-details"></div>
         </div>
     </section>
-
-
+    <div id="loading-spiner" class="d-none">
+        <div class="pokeball"></div>
+    </div>
 </body>
 
 </html>

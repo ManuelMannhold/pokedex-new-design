@@ -25,10 +25,14 @@ const typeColors = {
 };
 
 async function init() {
+  let loadingSpiner = document.getElementById("loading-spiner");
+
+  loadingSpiner.classList.remove("d-none");
   await fetchPokemon();
   await fetchPokemonDetails();
   displayPokemon();
   setTimeout(setPokemonCardBackground, 100);
+  loadingSpiner.classList.add("d-none");
 }
 
 async function fetchPokemon(offset, limit) {
@@ -39,16 +43,17 @@ async function fetchPokemon(offset, limit) {
   pokemon.push(...data.results);
 }
 
-async function fetchPokemonDetails() {
-  for (let j = 0; j < pokemon.length; j++) {
-    let url = pokemon[j].url;
-    let response = await fetch(url);
+async function fetchPokemonDetails(offset, limit) {
+  let newPokemon = pokemon.slice(-limit); // Nur die neu geladenen Pokémon holen
+
+  for (let p of newPokemon) {
+    let response = await fetch(p.url);
     let dataPokemon = await response.json();
 
     pokemonData.push(dataPokemon);
     console.log(pokemonData);
 
-    getPokemonTypes(j);
+    getPokemonTypes(pokemonData.length - 1); // Hole nur den Typ des neu geladenen Pokémon
   }
 }
 
@@ -66,6 +71,17 @@ function getPokemonTypes(i) {
     }
   }
   return pokeTypes;
+}
+
+async function loadMore() {
+  let inputPokemons = document.getElementById("input-pokemons");
+  let increaseBy = inputPokemons.valueAsNumber || 5;
+
+  let newOffset = offset + limit;
+  limit = increaseBy;
+  await fetchPokemon(newOffset, limit);
+  await fetchPokemonDetails(newOffset, limit);
+  displayPokemon();
 }
 
 function setPokemonCardBackground() {
