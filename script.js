@@ -25,14 +25,14 @@ const typeColors = {
 };
 
 async function init() {
-  let loadingSpiner = document.getElementById("loading-spiner");
+  let loadingSpinner = document.getElementById("loading-spinner");
 
-  loadingSpiner.classList.remove("d-none");
+  loadingSpinner.classList.remove("d-none");
   await fetchPokemon();
   await fetchPokemonDetails();
   displayPokemon();
   setTimeout(setPokemonCardBackground, 100);
-  loadingSpiner.classList.add("d-none");
+  loadingSpinner.classList.add("d-none");
 }
 
 async function fetchPokemon(offset, limit) {
