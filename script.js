@@ -77,6 +77,7 @@ async function load20More() {
   await fetchPokemon(offset, limit);
   await fetchPokemonDetails(offset, limit);
   displayPokemon();
+  setPokemonCardBackground();
   toggleLoadingSpinner();
 }
 
