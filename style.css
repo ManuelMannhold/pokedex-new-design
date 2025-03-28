@@ -59,6 +59,7 @@ header {
     border: 1px solid black;
     background: linear-gradient(135deg, var(--type1-color) 50%, var(--type2-color) 50%);
     cursor: pointer;
+    border-radius: 15px;
 
     header {
         display: flex;
@@ -84,6 +85,7 @@ header {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .pokemon-details {

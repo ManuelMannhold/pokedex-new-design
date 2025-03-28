@@ -31,7 +31,7 @@ async function init() {
   await fetchPokemon();
   await fetchPokemonDetails();
   displayPokemon();
-  setTimeout(setPokemonCardBackground, 100);
+  setPokemonCardBackground();
   loadingSpinner.classList.add("d-none");
 }
 
@@ -44,7 +44,7 @@ async function fetchPokemon(offset, limit) {
 }
 
 async function fetchPokemonDetails(offset, limit) {
-  let newPokemon = pokemon.slice(-limit); // Nur die neu geladenen Pokémon holen
+  let newPokemon = pokemon.slice(-limit);
 
   for (let p of newPokemon) {
     let response = await fetch(p.url);
@@ -53,7 +53,7 @@ async function fetchPokemonDetails(offset, limit) {
     pokemonData.push(dataPokemon);
     console.log(pokemonData);
 
-    getPokemonTypes(pokemonData.length - 1); // Hole nur den Typ des neu geladenen Pokémon
+    getPokemonTypes(pokemonData.length - 1);
   }
 }
 
@@ -85,11 +85,11 @@ async function loadMore() {
 }
 
 function setPokemonCardBackground() {
-  let cards = document.querySelectorAll(".pokemon-card"); // Alle Karten holen
+  let cards = document.querySelectorAll(".pokemon-card");
 
   for (let i = 0; i < pokemonData.length; i++) {
-    let card = cards[i]; // Richtige Karte holen
-    if (!card) continue; // Falls keine Karte gefunden wird, weitermachen
+    let card = cards[i];
+    if (!card) continue;
 
     let types = pokemonData[i].types;
     if (!types.length) continue;
@@ -116,7 +116,7 @@ function displayPokemon() {
 
   for (let i = 0; i < pokemon.length; i++) {
     content.innerHTML += `
-            <div class="pokemon-card" onclick="openPokemonDetails(${i})">
+            <div class="pokemon-card" onclick="openPokemonDetails(${i})" id="poke-card${i}">
               <header>
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
@@ -144,7 +144,7 @@ function openPokemonDetails(i) {
   container.classList.remove("d-none");
 
   container.innerHTML = `
-    <div class="pokemon-details">
+    <div class="pokemon-details pokemon-card">
     <span class="close-overlay" onclick="closeOverlay()">X</span>
               <header>
               <h2>${pokemonData[i].name}</h2>
