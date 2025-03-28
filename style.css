@@ -8,12 +8,40 @@
     display: none !important;
 }
 
+h1,
+h2,
+p {
+    pointer-events: none;
+}
+
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assests/img/pokemon-1624022_1280.jpg');
     background-size: auto;
     background-position: center;
     background-attachment: fixed;
     transition: background-position 0.5s ease;
+}
+
+button {
+    border-radius: 15px;
+    padding: 5px;
+    border: none;
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+input {
+    padding: 5px;
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 h1 {
@@ -28,6 +56,13 @@ h2 {
 
 .close-overlay {
     cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
 }
 
 header {
@@ -96,6 +131,8 @@ header {
 
 .load-more-input {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .fire {

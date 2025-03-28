@@ -3,6 +3,7 @@ let limit = 20;
 let pokemon = [];
 let pokemonData = [];
 let pokemonTypes = [];
+let allPokemon = [];
 const typeColors = {
   fire: "#F08030",
   water: "#6890F0",
@@ -28,6 +29,7 @@ async function init() {
   toggleLoadingSpinner();
   await fetchPokemon();
   await fetchPokemonDetails();
+  await fetchAllPokemon();
   displayPokemon();
   setPokemonCardBackground();
   toggleLoadingSpinner();
@@ -37,6 +39,7 @@ async function fetchPokemon(offset, limit) {
   let url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
   let response = await fetch(url);
   let data = await response.json();
+  console.log(data);
 
   pokemon.push(...data.results);
 }
@@ -53,6 +56,17 @@ async function fetchPokemonDetails(offset, limit) {
 
     getPokemonTypes(pokemonData.length - 1);
   }
+}
+
+async function fetchAllPokemon(offset, limit) {
+  offset = 0;
+  limit = 1302;
+  let url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
+  let response = await fetch(url);
+  let allPokemons = await response.json();
+  console.log(allPokemons);
+
+  allPokemon.push(allPokemons.results);
 }
 
 function getPokemonTypes(i) {
@@ -101,6 +115,20 @@ function setPokemonCardBackground() {
   }
 }
 
+function setBackgroundToOverlayCard(i) {
+  let card = document.getElementById(`poke-card-overlay${i}`);
+
+  let types = pokemonData[i].types;
+
+  let type1 = types[0].type.name;
+  let type2 = types[1] ? types[1].type.name : type1;
+
+  let color1 = typeColors[type1] || "#A8A878";
+  let color2 = typeColors[type2] || "#A8A878";
+
+  card.style.background = `linear-gradient(135deg, ${color1} 50%, ${color2} 50%)`;
+}
+
 function getPokemonCries(i) {
   let cries = pokemonData[i].cries.latest;
   let audio = new Audio(cries);
@@ -113,7 +141,7 @@ function displayPokemon() {
 
   for (let i = 0; i < pokemon.length; i++) {
     content.innerHTML += `
-            <div class="pokemon-card" onclick="openPokemonDetails(${i})" id="poke-card${i}">
+            <div class="pokemon-card" onclick="openPokemonDetails(${i}); setBackgroundToOverlayCard(${i})" id="poke-card${i}">
               <header>
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
@@ -141,7 +169,7 @@ function openPokemonDetails(i) {
   container.classList.remove("d-none");
 
   container.innerHTML = `
-    <div class="pokemon-details pokemon-card">
+    <div class="pokemon-details pokemon-card" id="poke-card-overlay${i}">
     <span class="close-overlay" onclick="closeOverlay()">X</span>
               <header>
               <h2>${pokemonData[i].name}</h2>
@@ -175,4 +203,9 @@ function toggleLoadingSpinner() {
   if (spinner) {
     spinner.classList.toggle("d-none");
   }
+}
+
+function searchPokemon() {
+  let input = document.getElementById("input-pokemon");
+  let search = input.value;
 }
