@@ -25,14 +25,12 @@ const typeColors = {
 };
 
 async function init() {
-  let loadingSpinner = document.getElementById("loading-spinner");
-
-  loadingSpinner.classList.remove("d-none");
+  toggleLoadingSpinner();
   await fetchPokemon();
   await fetchPokemonDetails();
   displayPokemon();
   setPokemonCardBackground();
-  loadingSpinner.classList.add("d-none");
+  toggleLoadingSpinner();
 }
 
 async function fetchPokemon(offset, limit) {
@@ -74,14 +72,12 @@ function getPokemonTypes(i) {
 }
 
 async function loadMore() {
-  let inputPokemons = document.getElementById("input-pokemons");
-  let increaseBy = inputPokemons.valueAsNumber || 5;
-
-  let newOffset = offset + limit;
-  limit = increaseBy;
-  await fetchPokemon(newOffset, limit);
-  await fetchPokemonDetails(newOffset, limit);
+  offset = offset + 20;
+  toggleLoadingSpinner();
+  await fetchPokemon(offset, limit);
+  await fetchPokemonDetails(offset, limit);
   displayPokemon();
+  toggleLoadingSpinner();
 }
 
 function setPokemonCardBackground() {
@@ -171,4 +167,11 @@ function closeOverlay() {
   let container = document.getElementById("pokemon-overlay");
 
   container.classList.add("d-none");
+}
+
+function toggleLoadingSpinner() {
+  const spinner = document.getElementById("loading-spinner");
+  if (spinner) {
+    spinner.classList.toggle("d-none");
+  }
 }
