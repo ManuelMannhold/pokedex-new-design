@@ -71,7 +71,7 @@ function getPokemonTypes(i) {
   return pokeTypes;
 }
 
-async function loadMore() {
+async function load20More() {
   offset = offset + 20;
   toggleLoadingSpinner();
   await fetchPokemon(offset, limit);
