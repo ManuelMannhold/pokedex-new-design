@@ -10,7 +10,7 @@
     <script src="script.js"></script>
 </head>
 
-<body onload="init()">
+<body onload="init(); searchPokemon()">
     <header>
         <h1>Pokedex</h1>
         <h2>Gotta Catch'em all</h2>
@@ -20,7 +20,7 @@
                 <input type="text" id="input-pokemon" autocomplete="off">
                 <button id="button-search-pokemon">Suchen</button>
             </div>
-            <div class="load-more-input">
+            <div class=" load-more-input">
                 <button id="button-load-more" onclick="load20More()">Lade 20 mehr</button>
             </div>
         </form>

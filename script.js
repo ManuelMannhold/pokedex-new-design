@@ -151,12 +151,14 @@ function displayPokemon() {
               <span>
                 ${getPokemonTypes(i)}
               </span>
-              <span><button onclick="getPokemonCries(${i})">Schrei</button></span>
+              <button onclick="getPokemonCries(${i})">Schrei</button>
               </header>
                 <div class="pokemon-info">
                   <span>
-                    Gewicht = ${pokemonData[i].weight / 10} Kg
-                    Größe = ${pokemonData[i].height * 10} cm
+                    <b>Gewicht:</b> ${pokemonData[i].weight / 10} Kg
+                  </span>
+                  <span>
+                    <b>Größe:</b> ${pokemonData[i].height * 10} cm
                   </span>
                 </div>
             </div>
@@ -184,8 +186,10 @@ function openPokemonDetails(i) {
               </header>
                 <div class="pokemon-info">
                   <span>
-                    Gewicht = ${pokemonData[i].weight / 10} Kg
-                    Größe = ${pokemonData[i].height * 10} cm
+                    Gewicht: ${pokemonData[i].weight / 10} Kg
+                  </span>
+                  <span>
+                    Größe: ${pokemonData[i].height * 10} cm
                   </span>
                 </div>
             </div>
@@ -206,6 +210,15 @@ function toggleLoadingSpinner() {
 }
 
 function searchPokemon() {
-  let input = document.getElementById("input-pokemon");
-  let search = input.value;
+  let input = document.getElementById("input-pokemon").value.toLowerCase();
+
+  input.addEventListener("keydown", (e) => {
+    let search = input.value;
+    for (let i = 0; i < allPokemon.length; i++) {
+      let allPokemon = allPokemon[i][i].name;
+      if (allPokemon.includes(search)) {
+        console.log(allPokemon[i]);
+      }
+    }
+  });
 }
