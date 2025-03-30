@@ -85,6 +85,20 @@ function getPokemonTypes(i) {
   return pokeTypes;
 }
 
+function getPokemonMoves(i) {
+  let pokeMoves = "";
+  if (pokemonData[i].moves.length > 0) {
+    for (let j = 0; j < pokemonData[i].moves.length; j++) {
+      let moves = pokemonData[i].moves[j].move.name;
+
+      pokeMoves += `
+        <span class="pokemon-moves">${moves}</span>
+    `;
+    }
+  }
+  return pokeMoves;
+}
+
 async function load20More() {
   offset = offset + 20;
   toggleLoadingSpinner();
@@ -148,9 +162,9 @@ function displayPokemon() {
               <img src="${
                 pokemonData[i].sprites.other.dream_world.front_default
               }">
-              <span>
+              <div>
                 ${getPokemonTypes(i)}
-              </span>
+              </div>
               <button onclick="getPokemonCries(${i})">Schrei</button>
               </header>
                 <div class="pokemon-info">
@@ -185,8 +199,8 @@ function openPokemonDetails(i) {
               <span><button onclick="getPokemonCries(${i})">Schrei</button></span>
               </header>
                 <div class="pokemon-info">
-                  <span>
-                    Gewicht: ${pokemonData[i].weight / 10} Kg
+                  <span class="pokemon-info-big-card-moves">
+                    ${getPokemonMoves(i)};
                   </span>
                   <span>
                     Größe: ${pokemonData[i].height * 10} cm

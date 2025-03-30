@@ -115,6 +115,21 @@ header {
     justify-content: space-evenly;
 }
 
+.pokemon-info-big-card-moves {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    margin: 10px;
+}
+
+.pokemon-moves {
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: lightgrey;
+    padding: 5px;
+    margin: 10px;
+}
+
 #pokemon-overlay {
     width: 100%;
     position: fixed;
