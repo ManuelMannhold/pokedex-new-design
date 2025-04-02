@@ -180,13 +180,24 @@ function displayPokemon() {
   }
 }
 
+function displayMoves() {
+  let display = document.getElementById("display-pokemon-info");
+  display.classList.remove("d-none");
+}
+
+function displayStats() {
+  let stats = document.getElementById("");
+}
+
 function openPokemonDetails(i) {
   let container = document.getElementById("pokemon-overlay");
   container.classList.remove("d-none");
 
   container.innerHTML = `
+  <div class="card-container">
+  <span class="close-overlay" onclick="closeOverlay()">X</span>
+  <span class="previous-pokemon"><a href="#"><</a></span>
     <div class="pokemon-details pokemon-card" id="poke-card-overlay${i}">
-    <span class="close-overlay" onclick="closeOverlay()">X</span>
               <header>
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
@@ -197,15 +208,20 @@ function openPokemonDetails(i) {
                 ${getPokemonTypes(i)}
               </span>
               <span><button onclick="getPokemonCries(${i})">Schrei</button></span>
+              <span>
+                    <button onclick="displayMoves()">Moves</button>
+                    <button onclick="displayStats()">Stats</button>
+                  </span>
               </header>
                 <div class="pokemon-info">
-                  <span class="pokemon-info-big-card-moves">
-                    ${getPokemonMoves(i)};
+                  <span class="pokemon-info-big-card-moves d-none"  id="display-pokemon-info">
+                    ${getPokemonMoves(i)}
                   </span>
-                  <span>
-                    Größe: ${pokemonData[i].height * 10} cm
+                  <span id="display-pokemon-stats">
                   </span>
                 </div>
+            </div>
+            <span class="next-pokemon"><a href="#">></a></span>
             </div>
         `;
 }

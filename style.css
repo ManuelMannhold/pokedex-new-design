@@ -8,6 +8,16 @@
     display: none !important;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+a:hover {
+    color: red;
+}
+
 h1,
 h2,
 p {
@@ -56,6 +66,27 @@ h2 {
 
 .close-overlay {
     cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: red;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.close-overlay:hover {
+    color: rgba(255, 0, 0, 0.8);
+}
+
+.previous-pokemon,
+.next-pokemon {
+    font-size: 40px;
+    color: red;
+}
+
+.previous-pokemon:hover,
+.next-pokemon:hover {
+    transform: scale(1.1);
 }
 
 form {
@@ -108,6 +139,11 @@ header {
     }
 }
 
+.card-container {
+    display: flex;
+    align-items: center;
+}
+
 .pokemon-info {
     display: flex;
     flex-direction: column;
@@ -120,6 +156,7 @@ header {
     flex-wrap: wrap;
     overflow-y: scroll;
     margin: 10px;
+    height: 100px;
 }
 
 .pokemon-moves {
@@ -127,7 +164,7 @@ header {
     border: 1px solid lightgray;
     background-color: lightgrey;
     padding: 5px;
-    margin: 10px;
+    margin: 5px;
 }
 
 #pokemon-overlay {
