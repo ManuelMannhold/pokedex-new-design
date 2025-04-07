@@ -196,7 +196,7 @@ function openPokemonDetails(i) {
   container.innerHTML = `
   <div class="card-container">
   <span class="close-overlay" onclick="closeOverlay()">X</span>
-  <span class="previous-pokemon"><a href="#"><</a></span>
+  <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
     <div class="pokemon-details pokemon-card" id="poke-card-overlay${i}">
               <header>
               <h2>${pokemonData[i].name}</h2>
@@ -221,7 +221,7 @@ function openPokemonDetails(i) {
                   </span>
                 </div>
             </div>
-            <span class="next-pokemon"><a href="#">></a></span>
+            <span class="next-pokemon" onclick="nextPokemon(${i})"><a href="#">></a></span>
             </div>
         `;
 }
@@ -251,4 +251,18 @@ function searchPokemon() {
       }
     }
   });
+}
+
+function nextPokemon(i) {
+  if (pokemonData[i].id + 1 <= pokemonData.length) i++;
+  else i = 0;
+
+  openPokemonDetails(i);
+  setBackgroundToOverlayCard(i);
+}
+
+function previousPokemon(i) {
+  i--;
+  openPokemonDetails(i);
+  setBackgroundToOverlayCard(i);
 }
