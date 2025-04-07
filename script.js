@@ -154,29 +154,7 @@ function displayPokemon() {
   content.innerHTML = "";
 
   for (let i = 0; i < pokemon.length; i++) {
-    content.innerHTML += `
-            <div class="pokemon-card" onclick="openPokemonDetails(${i}); setBackgroundToOverlayCard(${i})" id="poke-card${i}">
-              <header>
-              <h2>${pokemonData[i].name}</h2>
-              <h3>#${pokemonData[i].id}</h3>
-              <img src="${
-                pokemonData[i].sprites.other.dream_world.front_default
-              }">
-              <div>
-                ${getPokemonTypes(i)}
-              </div>
-              <button onclick="getPokemonCries(${i})">Schrei</button>
-              </header>
-                <div class="pokemon-info">
-                  <span>
-                    <b>Gewicht:</b> ${pokemonData[i].weight / 10} Kg
-                  </span>
-                  <span>
-                    <b>Größe:</b> ${pokemonData[i].height * 10} cm
-                  </span>
-                </div>
-            </div>
-        `;
+    content.innerHTML += displayPokemonTemplate(pokemonData, i);
   }
 }
 
@@ -193,37 +171,7 @@ function openPokemonDetails(i) {
   let container = document.getElementById("pokemon-overlay");
   container.classList.remove("d-none");
 
-  container.innerHTML = `
-  <div class="card-container">
-  <span class="close-overlay" onclick="closeOverlay()">X</span>
-  <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
-    <div class="pokemon-details pokemon-card" id="poke-card-overlay${i}">
-              <header>
-              <h2>${pokemonData[i].name}</h2>
-              <h3>#${pokemonData[i].id}</h3>
-              <img src="${
-                pokemonData[i].sprites.other.dream_world.front_default
-              }">
-              <span>
-                ${getPokemonTypes(i)}
-              </span>
-              <span><button onclick="getPokemonCries(${i})">Schrei</button></span>
-              <span>
-                    <button onclick="displayMoves()">Moves</button>
-                    <button onclick="displayStats()">Stats</button>
-                  </span>
-              </header>
-                <div class="pokemon-info">
-                  <span class="pokemon-info-big-card-moves d-none"  id="display-pokemon-info">
-                    ${getPokemonMoves(i)}
-                  </span>
-                  <span id="display-pokemon-stats">
-                  </span>
-                </div>
-            </div>
-            <span class="next-pokemon" onclick="nextPokemon(${i})"><a href="#">></a></span>
-            </div>
-        `;
+  container.innerHTML = openPokemonDetailsTemplate(pokemonData, i);
 }
 
 function closeOverlay() {
@@ -242,15 +190,17 @@ function toggleLoadingSpinner() {
 function searchPokemon() {
   let input = document.getElementById("input-pokemon").value.toLowerCase();
 
-  input.addEventListener("keydown", (e) => {
-    let search = input.value;
-    for (let i = 0; i < allPokemon.length; i++) {
-      let allPokemon = allPokemon[i][i].name;
-      if (allPokemon.includes(search)) {
-        console.log(allPokemon[i]);
+  if (input !== "") {
+    input.addEventListener("keydown", (e) => {
+      let search = input.value;
+      for (let i = 0; i < allPokemon.length; i++) {
+        let allPokemon = allPokemon[i][i].name;
+        if (allPokemon.includes(search)) {
+          console.log(allPokemon[i]);
+        }
       }
-    }
-  });
+    });
+  }
 }
 
 function nextPokemon(i) {
