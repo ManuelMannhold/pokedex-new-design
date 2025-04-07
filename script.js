@@ -254,15 +254,21 @@ function searchPokemon() {
 }
 
 function nextPokemon(i) {
-  if (pokemonData[i].id + 1 <= pokemonData.length) i++;
-  else i = 0;
-
+  if (pokemonData[i].id + 1 <= pokemonData.length) {
+    i++;
+  } else {
+    i = 0;
+  }
   openPokemonDetails(i);
   setBackgroundToOverlayCard(i);
 }
 
 function previousPokemon(i) {
-  i--;
+  if (pokemonData[i].id - 1 !== 0) {
+    i--;
+  } else {
+    i = pokemonData.length - 1;
+  }
   openPokemonDetails(i);
   setBackgroundToOverlayCard(i);
 }
