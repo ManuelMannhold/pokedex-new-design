@@ -26,7 +26,8 @@ p {
 
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assests/img/pokemon-1624022_1280.jpg');
-    background-size: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     transition: background-position 0.5s ease;
@@ -60,8 +61,10 @@ h1 {
     text-shadow: 1px 1px 2px white;
 }
 
-h2 {
+h2,
+h3 {
     text-shadow: 1px 1px 2px white;
+    font-size: clamp(30px, 3.5vw, 40px);
 }
 
 .close-overlay {
@@ -102,8 +105,6 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 40px;
 }
 
 #content {
@@ -115,10 +116,10 @@ header {
 }
 
 .pokemon-card {
-    width: 200px;
-    height: 300px;
+    width: clamp(200px, 40%, 400px);
     display: flex;
     flex-direction: column;
+    gap: 10px;
     align-items: center;
     padding: 5px;
     margin: 20px;
@@ -126,6 +127,7 @@ header {
     background: linear-gradient(135deg, var(--type1-color) 50%, var(--type2-color) 50%);
     cursor: pointer;
     border-radius: 15px;
+    font-size: clamp(20px, 1.5rem, 40px);
 
     header {
         display: flex;
@@ -137,6 +139,11 @@ header {
             width: 30%;
         }
     }
+}
+
+.pokemon-image-card {
+    display: flex;
+    justify-content: center;
 }
 
 .card-container {

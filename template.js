@@ -7,9 +7,11 @@ function openPokemonDetailsTemplate(pokemonData, i) {
               <header>
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
+              <span>
               <img src="${
                 pokemonData[i].sprites.other.dream_world.front_default
               }">
+              </span>
               <span>
                 ${getPokemonTypes(i)}
               </span>
@@ -38,9 +40,11 @@ function displayPokemonTemplate(pokemonData, i) {
               <header>
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
+              <span class="pokemon-image-card">
               <img src="${
                 pokemonData[i].sprites.other.dream_world.front_default
               }">
+              </span>
               <div>
                 ${getPokemonTypes(i)}
               </div>
@@ -56,4 +60,27 @@ function displayPokemonTemplate(pokemonData, i) {
                 </div>
             </div>
         `;
+}
+
+function displayPokemonTemplateoverlay(pokemon) {
+  return `
+  <div class="pokemon-card">
+    <header>
+    <h2>${pokemon.name}</h2>
+    <h3>#${pokemon.id}</h3>
+    <span>
+    <img src="${pokemon.sprites.other.dream_world.front_default}">
+  </span>
+    
+    </header>
+      <div class="pokemon-info">
+        <span>
+          <b>Gewicht:</b> ${pokemon.weight / 10} Kg
+        </span>
+        <span>
+          <b>Größe:</b> ${pokemon.height * 10} cm
+        </span>
+      </div>
+  </div>
+`;
 }
