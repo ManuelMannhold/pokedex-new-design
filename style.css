@@ -195,6 +195,11 @@ header {
     border: 1px solid black;
 }
 
+.display-pokemon-overlay {
+    display: flex;
+    justify-content: center;
+}
+
 .load-more-input {
     width: 100%;
     display: flex;

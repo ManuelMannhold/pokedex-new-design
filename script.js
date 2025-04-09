@@ -161,7 +161,7 @@ function displayPokemon() {
 function displayPokemonSearch(pokemon) {
   let content = document.getElementById("content");
 
-  content.innerHTML += displayPokemonTemplateoverlay(pokemon);
+  content.innerHTML += displayPokemonTemplateOverlay(pokemon);
 }
 
 function displayMoves() {
@@ -211,6 +211,7 @@ function searchPokemon() {
     if (filtered.length > 0) {
       filtered.forEach((p) => {
         displayPokemonSearch(p);
+        setPokemonCardBackground();
       });
     }
   } else {

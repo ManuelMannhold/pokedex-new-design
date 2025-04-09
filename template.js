@@ -62,16 +62,15 @@ function displayPokemonTemplate(pokemonData, i) {
         `;
 }
 
-function displayPokemonTemplateoverlay(pokemon) {
+function displayPokemonTemplateOverlay(pokemon) {
   return `
   <div class="pokemon-card">
     <header>
     <h2>${pokemon.name}</h2>
     <h3>#${pokemon.id}</h3>
-    <span>
+    <span class="display-pokemon-overlay">
     <img src="${pokemon.sprites.other.dream_world.front_default}">
   </span>
-    
     </header>
       <div class="pokemon-info">
         <span>
