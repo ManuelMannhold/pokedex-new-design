@@ -106,6 +106,7 @@ async function load20More() {
   displayPokemon();
   setPokemonCardBackground();
   toggleLoadingSpinner();
+  document.getElementById("input-pokemon").value = "";
 }
 
 function setPokemonCardBackground() {
