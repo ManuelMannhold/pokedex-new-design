@@ -4,14 +4,15 @@ function openPokemonDetailsTemplate(pokemonData, i) {
   <span class="close-overlay" onclick="closeOverlay()">X</span>
   <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
     <div class="pokemon-details pokemon-card" id="poke-card-overlay${i}">
-              <header>
-              <h2>${pokemonData[i].name}</h2>
-              <h3>#${pokemonData[i].id}</h3>
+              <header class="pokemon-detail-header">
+              <h3 class="pokemon-details-id">#${pokemonData[i].id}</h3>
               <span class="pokemon-details-overlay">
               <img src="${
                 pokemonData[i].sprites.other.dream_world.front_default
               }">
               </span>
+              </header>
+              <section>
               <span>
                 ${getPokemonTypes(i)}
               </span>
@@ -20,13 +21,14 @@ function openPokemonDetailsTemplate(pokemonData, i) {
                     <button onclick="displayMoves()">Moves</button>
                     <button onclick="displayStats()">Stats</button>
                   </span>
-              </header>
+              </section>
                 <div class="pokemon-info">
                   <span class="pokemon-info-big-card-moves d-none"  id="display-pokemon-info">
                     ${getPokemonMoves(i)}
                   </span>
                   <span id="display-pokemon-stats">
                   </span>
+                  <canvas id="myChart" width="400" height="400" class="d-none"></canvas>
                 </div>
             </div>
             <span class="next-pokemon" onclick="nextPokemon(${i})"><a href="#">></a></span>

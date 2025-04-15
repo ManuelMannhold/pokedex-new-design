@@ -64,8 +64,10 @@ async function fetchAllPokemon(offset, limit) {
   let response = await fetch(url);
   let allPokemons = await response.json();
 
-  allPokemon.push(allPokemons.results);
+  allPokemon.push(...allPokemons.results);
 }
+
+function getPokemonId() {}
 
 function getPokemonTypes(i) {
   pokemonTypes = pokemonData[i].types;
@@ -219,6 +221,27 @@ function searchPokemon() {
   }
 }
 
+async function showStatsOnChart(pokemonId) {
+  let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+  let pokemonData = await response.json();
+  let container = document.getElementById("content-left-side");
+
+  container.innerHTML = `
+      <canvas id="myChart"></canvas>
+    `;
+  renderChart(pokemonData);
+}
+
+function displayOverlay() {
+  document
+    .getElementById("overlay-load-all-pokemon")
+    .classList.remove("d-none");
+}
+
+function closeOverlay() {
+  document.getElementById("overlay-load-all-pokemon").classList.add("d-none");
+}
+
 function nextPokemon(i) {
   if (pokemonData[i].id + 1 <= pokemonData.length) {
     i++;
@@ -239,8 +262,11 @@ function previousPokemon(i) {
   setBackgroundToOverlayCard(i);
 }
 
-async function loadAllPokemon(i) {
-  offset = offset + allPokemon[i].length;
+async function loadAllPokemon() {
+  document.getElementById("overlay-load-all-pokemon").classList.add("d-none");
+  offset = 20;
+  limit += 1302;
+  limit += offset;
   toggleLoadingSpinner();
   await fetchPokemon(offset, limit);
   await fetchPokemonDetails(offset, limit);

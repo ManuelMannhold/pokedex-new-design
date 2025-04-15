@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="media.css">
     <script src="script.js"></script>
     <script src="template.js"></script>
+    <script src="chart.js"></script>
 </head>
 
 <body onload="init(); searchPokemon()">
@@ -24,7 +25,7 @@
                 <button id="button-load-more" onclick="load20More()">Lade 20 mehr</button>
             </div>
             <div class="load-add">
-                <button onclick="loadAllPokemon()">Lade Alle Pokemon</button>
+                <button onclick="displayOverlay()">Lade Alle Pokemon</button>
             </div>
         </form>
     </header>
@@ -37,6 +38,16 @@
     </section>
     <div id="loading-spinner" class="d-none">
         <div class="pokeball"></div>
+    </div>
+    <div id="overlay-load-all-pokemon" class="d-none">
+        <div class="overlay-message">
+            <span>Sicher alle Pokemon Laden?</span>
+            <span>Es wird einige Zeit dauern und den Datenverbrauch erhöhen</span>
+            <div class="buttons-overlay-message">
+                <button id="load-all" onclick="loadAllPokemon()">Ja</button>
+                <button id="stop-load" onclick="closeOverlay()">Nein</button>
+            </div>
+        </div>
     </div>
 </body>
 
