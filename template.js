@@ -7,7 +7,7 @@ function openPokemonDetailsTemplate(pokemonData, i) {
               <header>
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
-              <span>
+              <span class="pokemon-details-overlay">
               <img src="${
                 pokemonData[i].sprites.other.dream_world.front_default
               }">

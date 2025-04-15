@@ -51,8 +51,13 @@ input {
     outline: none;
 }
 
+.subheadline {
+    color: white;
+}
+
 button:hover {
     background-color: rgba(255, 255, 255, 0.8);
+
 }
 
 h1 {
@@ -61,7 +66,6 @@ h1 {
     text-shadow: 1px 1px 2px white;
 }
 
-h2,
 h3 {
     text-shadow: 1px 1px 2px white;
     font-size: clamp(30px, 3.5vw, 40px);
@@ -176,6 +180,7 @@ header {
     background-color: lightgrey;
     padding: 5px;
     margin: 5px;
+    font-size: 16px;
 }
 
 #pokemon-overlay {
@@ -197,6 +202,11 @@ header {
     width: 300px;
     height: 400px;
     border: 1px solid black;
+}
+
+.pokemon-details-overlay {
+    display: flex;
+    justify-content: center;
 }
 
 .display-pokemon-overlay {

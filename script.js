@@ -63,7 +63,6 @@ async function fetchAllPokemon(offset, limit) {
   let url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
   let response = await fetch(url);
   let allPokemons = await response.json();
-  console.log(allPokemons);
 
   allPokemon.push(allPokemons.results);
 }
@@ -238,4 +237,15 @@ function previousPokemon(i) {
   }
   openPokemonDetails(i);
   setBackgroundToOverlayCard(i);
+}
+
+async function loadAllPokemon(i) {
+  offset = offset + allPokemon[i].length;
+  toggleLoadingSpinner();
+  await fetchPokemon(offset, limit);
+  await fetchPokemonDetails(offset, limit);
+  displayPokemon();
+  setPokemonCardBackground();
+  toggleLoadingSpinner();
+  document.getElementById("input-pokemon").value = "";
 }
