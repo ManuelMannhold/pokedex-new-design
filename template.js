@@ -12,7 +12,7 @@ function displayPokemonTemplate(pokemonData, i, germanName) {
               <div>
                 ${getPokemonTypes(i)}
               </div>
-              <button onclick="getPokemonCries(${i}, event)">Schrei</button>
+              <span class="cries-sound" onclick="getPokemonCries(${i}, event)">🔊</span>
               </header>
                 <div class="pokemon-info">
                   <span>
