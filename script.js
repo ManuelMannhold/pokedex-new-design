@@ -91,8 +91,6 @@ async function getGermanPokemonName(i) {
   }
 }
 
-function getPokemonId() {}
-
 function getPokemonTypes(i) {
   pokemonTypes = pokemonData[i].types;
   let pokeTypes = "";
@@ -168,7 +166,8 @@ function setBackgroundToOverlayCard(i) {
   card.style.background = `linear-gradient(135deg, ${color1} 50%, ${color2} 50%)`;
 }
 
-function getPokemonCries(i) {
+function getPokemonCries(i, event) {
+  event.stopPropagation();
   let cries = pokemonData[i].cries.latest;
   let audio = new Audio(cries);
   return audio.play();
