@@ -180,9 +180,10 @@ function openPokemonDetails(i) {
   container.classList.remove("d-none");
 
   container.innerHTML = openPokemonDetailsTemplate(pokemonData, i);
+  displayMoves();
 }
 
-function closeOverlay() {
+function closeOverlayDetails() {
   let container = document.getElementById("pokemon-overlay");
 
   container.classList.add("d-none");

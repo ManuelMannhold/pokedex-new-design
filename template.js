@@ -1,7 +1,35 @@
+function displayPokemonTemplate(pokemonData, i) {
+  return `
+            <div class="pokemon-card" onclick="openPokemonDetails(${i}); setBackgroundToOverlayCard(${i})" id="poke-card${i}">
+              <header>
+              <h2>${pokemonData[i].name}</h2>
+              <h3>#${pokemonData[i].id}</h3>
+              <span class="pokemon-image-card">
+              <img src="${
+                pokemonData[i].sprites.other.dream_world.front_default
+              }">
+              </span>
+              <div>
+                ${getPokemonTypes(i)}
+              </div>
+              <button onclick="getPokemonCries(${i})">Schrei</button>
+              </header>
+                <div class="pokemon-info">
+                  <span>
+                    <b>Gewicht:</b> ${pokemonData[i].weight / 10} Kg
+                  </span>
+                  <span>
+                    <b>Größe:</b> ${pokemonData[i].height * 10} cm
+                  </span>
+                </div>
+            </div>
+        `;
+}
+
 function openPokemonDetailsTemplate(pokemonData, i) {
   return `
   <div class="card-container">
-  <span class="close-overlay" onclick="closeOverlay()">X</span>
+  <span class="close-overlay" onclick="closeOverlayDetails()">X</span>
   <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
     <div class="pokemon-details" id="poke-card-overlay${i}">
               <header class="pokemon-detail-header">
@@ -30,34 +58,6 @@ function openPokemonDetailsTemplate(pokemonData, i) {
             <span class="next-pokemon" onclick="nextPokemon(${i})"><a href="#">></a></span>
             </div>
              </section>
-        `;
-}
-
-function displayPokemonTemplate(pokemonData, i) {
-  return `
-            <div class="pokemon-card" onclick="openPokemonDetails(${i}); setBackgroundToOverlayCard(${i})" id="poke-card${i}">
-              <header>
-              <h2>${pokemonData[i].name}</h2>
-              <h3>#${pokemonData[i].id}</h3>
-              <span class="pokemon-image-card">
-              <img src="${
-                pokemonData[i].sprites.other.dream_world.front_default
-              }">
-              </span>
-              <div>
-                ${getPokemonTypes(i)}
-              </div>
-              <button onclick="getPokemonCries(${i})">Schrei</button>
-              </header>
-                <div class="pokemon-info">
-                  <span>
-                    <b>Gewicht:</b> ${pokemonData[i].weight / 10} Kg
-                  </span>
-                  <span>
-                    <b>Größe:</b> ${pokemonData[i].height * 10} cm
-                  </span>
-                </div>
-            </div>
         `;
 }
 
