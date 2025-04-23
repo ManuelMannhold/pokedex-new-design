@@ -67,29 +67,6 @@ async function fetchAllPokemon(offset, limit) {
   allPokemon.push(...allPokemons.results);
 }
 
-async function getGermanPokemonName(i) {
-  let pokemonName = pokemonData[i].name;
-  try {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${pokemonName.toLowerCase()}`
-    );
-    const data = await response.json();
-
-    const germanNameEntry = data.names.find(
-      (entry) => entry.language.name === "de"
-    );
-
-    if (germanNameEntry) {
-      return germanNameEntry.name;
-    } else {
-      return `Kein deutscher Name gefunden für ${pokemonName}`;
-    }
-  } catch (error) {
-    console.error("Fehler beim Abrufen:", error);
-    return "Fehler beim Abrufen der Daten";
-  }
-}
-
 function getPokemonTypes(i) {
   pokemonTypes = pokemonData[i].types;
   let pokeTypes = "";
@@ -177,8 +154,7 @@ async function displayPokemon() {
   content.innerHTML = "";
 
   for (let i = 0; i < pokemon.length; i++) {
-    let germanName = await getGermanPokemonName(i);
-    content.innerHTML += displayPokemonTemplate(pokemonData, i, germanName);
+    content.innerHTML += displayPokemonTemplate(pokemonData, i);
     setPokemonCardBackground();
   }
 }
