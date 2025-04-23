@@ -1,5 +1,6 @@
 function renderChart(pokemonData) {
-  const ctx = document.getElementById(`myChart`);
+  const ctx = document.getElementById(`my-chart`);
+  const mainColor = getPrimaryColor(pokemonData);
 
   new Chart(ctx, {
     type: "bar",
@@ -15,8 +16,9 @@ function renderChart(pokemonData) {
             speedDefense(pokemonData),
             speed(pokemonData),
           ],
-          borderWidth: 1,
-          backgroundColor: "green",
+          borderWidth: 2,
+          borderColor: "#fff",
+          backgroundColor: mainColor,
         },
       ],
     },
@@ -24,10 +26,16 @@ function renderChart(pokemonData) {
       scales: {
         x: {
           display: true,
+          ticks: {
+            color: "#000",
+          },
         },
         y: {
           grid: {
             display: false,
+          },
+          ticks: {
+            color: "#000",
           },
         },
       },
@@ -37,6 +45,7 @@ function renderChart(pokemonData) {
         title: {
           display: true,
           text: "POKEMON STATS",
+          color: "#000",
         },
         legend: {
           display: false,

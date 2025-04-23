@@ -73,7 +73,6 @@ async function getGermanPokemonName(i) {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon-species/${pokemonName.toLowerCase()}`
     );
-    console.log(response);
     const data = await response.json();
 
     const germanNameEntry = data.names.find(
@@ -187,12 +186,19 @@ async function displayPokemon() {
 function displayPokemonSearch(pokemon) {
   let content = document.getElementById("content");
 
-  content.innerHTML += displayPokemonTemplateOverlay(pokemon);
+  content.innerHTML += displayPokemonTemplateOverlaySearch(pokemon);
 }
 
 function displayMoves() {
   let display = document.getElementById("display-pokemon-info");
-  display.classList.remove("d-none");
+  let chart = document.getElementById("my-chart");
+
+  if (!chart) {
+    display.classList.remove("d-none");
+  } else {
+    chart.classList.add("d-none");
+    display.classList.remove("d-none");
+  }
 }
 
 function displayStats() {
@@ -246,15 +252,16 @@ function searchPokemon() {
   }
 }
 
-async function showStatsOnChart(pokemonId) {
+async function showStatsOnChart(i) {
+  let pokemonId = pokemonData[i].id;
   let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-  let pokemonData = await response.json();
-  let container = document.getElementById("content-left-side");
+  let pokemonIds = await response.json();
+  let container = document.getElementById("my-chart");
+  let moves = document.getElementById("display-pokemon-info");
+  moves.classList.add("d-none");
 
-  container.innerHTML = `
-      <canvas id="myChart"></canvas>
-    `;
-  renderChart(pokemonData);
+  container.classList.remove("d-none");
+  renderChart(pokemonIds);
 }
 
 function displayOverlay() {
@@ -299,4 +306,9 @@ async function loadAllPokemon() {
   setPokemonCardBackground();
   toggleLoadingSpinner();
   document.getElementById("input-pokemon").value = "";
+}
+
+function getPrimaryColor(pokemonData) {
+  let type = pokemonData.types[0].type.name;
+  return typeColors[type] || "#A8A878";
 }

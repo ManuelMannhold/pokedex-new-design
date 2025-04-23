@@ -43,8 +43,8 @@ function openPokemonDetailsTemplate(pokemonData, i) {
               <section class="section-overlay-card">
               <span>
                     <button onclick="displayMoves()">Moves</button>
-                    <button onclick="displayStats()">Stats</button>
-                  </span>
+                    <button onclick="showStatsOnChart(${i})">Stats</button>
+              </span>
              
                 <div class="pokemon-info">
                   <span class="pokemon-info-big-card-moves d-none"  id="display-pokemon-info">
@@ -52,7 +52,7 @@ function openPokemonDetailsTemplate(pokemonData, i) {
                   </span>
                   <span id="display-pokemon-stats">
                   </span>
-                  <canvas id="myChart" width="400" height="400" class="d-none"></canvas>
+                  <canvas id="my-chart" width="200" height="170" class="d-none"></canvas>
                 </div>
             </div>
             <span class="next-pokemon" onclick="nextPokemon(${i})"><a href="#">></a></span>
@@ -61,7 +61,7 @@ function openPokemonDetailsTemplate(pokemonData, i) {
         `;
 }
 
-function displayPokemonTemplateOverlay(pokemon) {
+function displayPokemonTemplateOverlaySearch(pokemon) {
   return `
   <div class="pokemon-card">
     <header>
