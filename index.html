@@ -25,9 +25,9 @@
                 <input type="text" id="input-pokemon" autocomplete="off" placeholder="Pokemon eingeben....">
             </div>
             <div class=" load-more-input">
-                <button onclick="load20More()">Lade 20 mehr</button>
-                <button onclick="load50More()">Lade 50 mehr</button>
-                <button onclick="load100More()">Lade 100 mehr</button>
+                <button onclick="loadMore(20)">Lade 20 mehr</button>
+                <button onclick="loadMore(50)">Lade 50 mehr</button>
+                <button onclick="loadMore(100)">Lade 100 mehr</button>
             </div>
             <div class="load-add">
                 <button onclick="displayOverlay()">Lade Alle Pokemon</button>
@@ -43,6 +43,7 @@
     </section>
     <div id="loading-spinner" class="d-none">
         <div class="pokeball"></div>
+        <div id="loaded-pokemon"></div>
     </div>
     <div id="overlay-load-all-pokemon" class="d-none">
         <div class="overlay-message">

@@ -32,7 +32,6 @@ async function init() {
   await fetchAllPokemon();
   displayPokemon();
   toggleLoadingSpinner();
-  load();
 }
 
 async function fetchPokemon(offset, limit) {
@@ -44,7 +43,7 @@ async function fetchPokemon(offset, limit) {
   pokemon.push(...data.results);
 }
 
-async function fetchPokemonDetails(offset, limit) {
+async function fetchPokemonDetails(limit) {
   let newPokemon = pokemon.slice(-limit);
 
   for (let p of newPokemon) {
@@ -55,6 +54,14 @@ async function fetchPokemonDetails(offset, limit) {
     console.log(pokemonData);
 
     getPokemonTypes(pokemonData.length - 1);
+    updateLiveCounter(pokemonData.length);
+  }
+}
+
+function updateLiveCounter(count) {
+  const loadedPokemon = document.getElementById("loaded-pokemon");
+  if (loadedPokemon) {
+    loadedPokemon.innerHTML = `<span>${count} von ${limit} geladen</span>`;
   }
 }
 
@@ -98,33 +105,12 @@ function getPokemonMoves(i) {
   return pokeMoves;
 }
 
-async function load20More() {
-  offset = offset + 20;
+async function loadMore(count) {
+  let currentOffset = offset + count;
+  limit = count;
   toggleLoadingSpinner();
-  await fetchPokemon(offset, limit);
-  await fetchPokemonDetails(offset, limit);
-  displayPokemon();
-  setPokemonCardBackground();
-  toggleLoadingSpinner();
-  document.getElementById("input-pokemon").value = "";
-}
-
-async function load50More() {
-  offset = offset + 50;
-  toggleLoadingSpinner();
-  await fetchPokemon(offset, limit);
-  await fetchPokemonDetails(offset, limit);
-  displayPokemon();
-  setPokemonCardBackground();
-  toggleLoadingSpinner();
-  document.getElementById("input-pokemon").value = "";
-}
-
-async function load100More() {
-  offset = offset + 100;
-  toggleLoadingSpinner();
-  await fetchPokemon(offset, limit);
-  await fetchPokemonDetails(offset, limit);
+  await fetchPokemon(currentOffset, limit);
+  await fetchPokemonDetails(currentOffset, limit);
   displayPokemon();
   setPokemonCardBackground();
   toggleLoadingSpinner();
@@ -219,9 +205,17 @@ function closeOverlayDetails() {
 }
 
 function toggleLoadingSpinner() {
+  let loadedPokemon = document.getElementById("loaded-pokemon");
   const spinner = document.getElementById("loading-spinner");
   if (spinner) {
     spinner.classList.toggle("d-none");
+  }
+  if (loadedPokemon) {
+    loadedPokemon.innerHTML = `
+    <span>
+      ${pokemonData.length} von ${limit} geladen
+    </span>
+  `;
   }
 }
 
@@ -318,5 +312,8 @@ function save() {
 }
 
 function load() {
-  localStorage.getItem("pokemonData");
+  const savedData = localStorage.getItem("pokemonData");
+  if (savedData) {
+    pokemonData = JSON.parse(savedData);
+  }
 }
