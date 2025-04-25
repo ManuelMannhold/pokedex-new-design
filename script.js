@@ -109,6 +109,28 @@ async function load20More() {
   document.getElementById("input-pokemon").value = "";
 }
 
+async function load50More() {
+  offset = offset + 50;
+  toggleLoadingSpinner();
+  await fetchPokemon(offset, limit);
+  await fetchPokemonDetails(offset, limit);
+  displayPokemon();
+  setPokemonCardBackground();
+  toggleLoadingSpinner();
+  document.getElementById("input-pokemon").value = "";
+}
+
+async function load100More() {
+  offset = offset + 100;
+  toggleLoadingSpinner();
+  await fetchPokemon(offset, limit);
+  await fetchPokemonDetails(offset, limit);
+  displayPokemon();
+  setPokemonCardBackground();
+  toggleLoadingSpinner();
+  document.getElementById("input-pokemon").value = "";
+}
+
 function setPokemonCardBackground() {
   let cards = document.querySelectorAll(".pokemon-card");
 
