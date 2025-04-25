@@ -32,6 +32,7 @@ async function init() {
   await fetchAllPokemon();
   displayPokemon();
   toggleLoadingSpinner();
+  load();
 }
 
 async function fetchPokemon(offset, limit) {
@@ -210,8 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function searchPokemon() {
   let input = document.getElementById("input-pokemon").value.toLowerCase();
-  let resultDiv = document.getElementById("content");
-  resultDiv.innerHTML = "";
+  let result = document.getElementById("content");
+  result.innerHTML = "";
 
   if (input !== "") {
     let filtered = pokemonData.filter((pokemon) =>
@@ -287,4 +288,13 @@ async function loadAllPokemon() {
 function getPrimaryColor(pokemonData) {
   let type = pokemonData.types[0].type.name;
   return typeColors[type] || "#A8A878";
+}
+
+function save() {
+  const dataToSave = JSON.stringify(pokemonData);
+  localStorage.setItem("pokemonData", dataToSave);
+}
+
+function load() {
+  localStorage.getItem("pokemonData");
 }

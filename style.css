@@ -121,6 +121,14 @@ header {
     align-items: center;
 }
 
+.header-name-id-span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-transform: capitalize;
+}
+
 #content {
     width: 100%;
     display: flex;
@@ -176,7 +184,7 @@ header {
 .card-container {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .pokemon-info {

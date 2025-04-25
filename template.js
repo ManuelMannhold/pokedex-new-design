@@ -2,8 +2,10 @@ function displayPokemonTemplate(pokemonData, i) {
   return `
             <div class="pokemon-card" onclick="openPokemonDetails(${i}); setBackgroundToOverlayCard(${i})" id="poke-card${i}">
               <header>
+              <span class="header-name-id-span">
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>
+              </span>
               <span class="pokemon-image-card">
               <img src="${
                 pokemonData[i].sprites.other.dream_world.front_default
