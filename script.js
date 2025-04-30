@@ -4,6 +4,7 @@ let pokemon = [];
 let pokemonData = [];
 let pokemonTypes = [];
 let allPokemon = [];
+let totalPokemonToLoad = 20;
 const typeColors = {
   fire: "#F08030",
   water: "#6890F0",
@@ -35,30 +36,33 @@ async function init() {
 }
 
 async function fetchPokemon(offset, limit) {
-  let url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
-  let response = await fetch(url);
-  let data = await response.json();
-  console.log(data);
-
-  pokemon.push(...data.results);
-}
-
-async function fetchPokemonDetails(limit) {
-  let newPokemon = pokemon.slice(-limit);
-
-  for (let p of newPokemon) {
-    let response = await fetch(p.url);
-    let dataPokemon = await response.json();
-
-    pokemonData.push(dataPokemon);
-    console.log(pokemonData);
-
-    getPokemonTypes(pokemonData.length - 1);
-    updateLiveCounter(pokemonData.length);
+  try {
+    let url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    pokemon.push(...data.results);
+  } catch (e) {
+    console.error(e);
   }
 }
 
-function updateLiveCounter(count) {
+async function fetchPokemonDetails(limit) {
+  if (limit === undefined) {
+    limit = 20;
+  }
+  let totalPokemonToLoad = offset + limit;
+  let newPokemon = pokemon.slice(-limit);
+  for (let pokemon of newPokemon) {
+    let response = await fetch(pokemon.url);
+    let dataPokemon = await response.json();
+
+    pokemonData.push(dataPokemon);
+    getPokemonTypes(pokemonData.length - 1);
+    updateLiveCounter(pokemonData.length, totalPokemonToLoad);
+  }
+}
+
+function updateLiveCounter(count, limit) {
   const loadedPokemon = document.getElementById("loaded-pokemon");
   if (loadedPokemon) {
     loadedPokemon.innerHTML = `<span>${count} von ${limit} geladen</span>`;
@@ -106,14 +110,14 @@ function getPokemonMoves(i) {
 }
 
 async function loadMore(count) {
-  let currentOffset = offset + count;
+  offset = pokemonData.length;
   limit = count;
-  toggleLoadingSpinner();
-  await fetchPokemon(currentOffset, limit);
-  await fetchPokemonDetails(currentOffset, limit);
+  toggleLoadingSpinner(totalPokemonToLoad);
+  await fetchPokemon(offset, limit);
+  await fetchPokemonDetails(limit);
   displayPokemon();
   setPokemonCardBackground();
-  toggleLoadingSpinner();
+  toggleLoadingSpinner(totalPokemonToLoad);
   document.getElementById("input-pokemon").value = "";
 }
 
@@ -205,17 +209,9 @@ function closeOverlayDetails() {
 }
 
 function toggleLoadingSpinner() {
-  let loadedPokemon = document.getElementById("loaded-pokemon");
   const spinner = document.getElementById("loading-spinner");
   if (spinner) {
     spinner.classList.toggle("d-none");
-  }
-  if (loadedPokemon) {
-    loadedPokemon.innerHTML = `
-    <span>
-      ${pokemonData.length} von ${limit} geladen
-    </span>
-  `;
   }
 }
 
@@ -289,16 +285,7 @@ function previousPokemon(i) {
 
 async function loadAllPokemon() {
   document.getElementById("overlay-load-all-pokemon").classList.add("d-none");
-  offset = 20;
-  limit += 1302;
-  limit += offset;
-  toggleLoadingSpinner();
-  await fetchPokemon(offset, limit);
-  await fetchPokemonDetails(offset, limit);
-  displayPokemon();
-  setPokemonCardBackground();
-  toggleLoadingSpinner();
-  document.getElementById("input-pokemon").value = "";
+  loadMore(allPokemon.length);
 }
 
 function getPrimaryColor(pokemonData) {
