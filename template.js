@@ -62,25 +62,3 @@ function openPokemonDetailsTemplate(pokemonData, i) {
              </section>
         `;
 }
-
-function displayPokemonTemplateOverlaySearch(pokemon) {
-  return `
-  <div class="pokemon-card">
-    <header>
-    <h2>${pokemon.name}</h2>
-    <h3>#${pokemon.id}</h3>
-    <span class="display-pokemon-overlay">
-    <img src="${pokemon.sprites.other.dream_world.front_default}">
-  </span>
-    </header>
-      <div class="pokemon-info">
-        <span>
-          <b>Gewicht:</b> ${pokemon.weight / 10} Kg
-        </span>
-        <span>
-          <b>Größe:</b> ${pokemon.height * 10} cm
-        </span>
-      </div>
-  </div>
-`;
-}

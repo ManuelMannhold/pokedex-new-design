@@ -162,20 +162,18 @@ function getPokemonCries(i, event) {
   return audio.play();
 }
 
-async function displayPokemon() {
+async function displayPokemon(pokemons) {
   let content = document.getElementById("content");
   content.innerHTML = "";
 
-  for (let i = 0; i < pokemon.length; i++) {
-    content.innerHTML += displayPokemonTemplate(pokemonData, i);
-    setPokemonCardBackground();
+  if (!pokemons) {
+    pokemons = pokemonData;
   }
-}
 
-function displayPokemonSearch(pokemon) {
-  let content = document.getElementById("content");
-
-  content.innerHTML += displayPokemonTemplateOverlaySearch(pokemon);
+  for (let i = 0; i < pokemons.length; i++) {
+    content.innerHTML += displayPokemonTemplate(pokemons, i);
+  }
+  setPokemonCardBackground();
 }
 
 function displayMoves() {
@@ -197,6 +195,9 @@ function displayStats() {
 function openPokemonDetails(i) {
   let container = document.getElementById("pokemon-overlay");
   container.classList.remove("d-none");
+
+  let currentId = pokemon[i].id;
+  console.log(currentId);
 
   container.innerHTML = openPokemonDetailsTemplate(pokemonData, i);
   displayMoves();
@@ -223,19 +224,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function searchPokemon() {
   let input = document.getElementById("input-pokemon").value.toLowerCase();
-  let result = document.getElementById("content");
-  result.innerHTML = "";
 
   if (input !== "") {
     let filtered = pokemonData.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(input)
     );
-    if (filtered.length > 0) {
-      filtered.forEach((p) => {
-        displayPokemonSearch(p);
-        setPokemonCardBackground();
-      });
-    }
+    displayPokemon(filtered);
   } else {
     displayPokemon();
   }
