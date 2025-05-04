@@ -3,6 +3,7 @@ let limit = 20;
 let pokemon = [];
 let pokemonData = [];
 let pokemonTypes = [];
+let pokemonDetails = [];
 let allPokemon = [];
 let totalPokemonToLoad = 20;
 const typeColors = {
@@ -162,16 +163,12 @@ function getPokemonCries(i, event) {
   return audio.play();
 }
 
-async function displayPokemon(pokemons) {
+async function displayPokemon() {
   let content = document.getElementById("content");
   content.innerHTML = "";
 
-  if (!pokemons) {
-    pokemons = pokemonData;
-  }
-
-  for (let i = 0; i < pokemons.length; i++) {
-    content.innerHTML += displayPokemonTemplate(pokemons, i);
+  for (let i = 0; i < pokemonData.length; i++) {
+    content.innerHTML += displayPokemonTemplate(pokemonData, i);
   }
   setPokemonCardBackground();
 }
@@ -229,10 +226,12 @@ function searchPokemon() {
     let filtered = pokemonData.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(input)
     );
-    displayPokemon(filtered);
+    pokemonData = filtered;
   } else {
-    displayPokemon();
+    pokemonData.splice(pokemonData.length);
+    pokemonData = pokemonDetails;
   }
+  displayPokemon();
 }
 
 async function showStatsOnChart(i) {
