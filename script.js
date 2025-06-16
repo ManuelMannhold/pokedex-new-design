@@ -4,6 +4,7 @@ let pokemon = [];
 let pokemonData = [];
 let pokemonTypes = [];
 let allPokemon = [];
+let originalPokemon = [];
 let totalPokemonToLoad = 20;
 const typeColors = {
   fire: "#F08030",
@@ -57,6 +58,7 @@ async function fetchPokemonDetails(limit) {
     let dataPokemon = await response.json();
 
     pokemonData.push(dataPokemon);
+    originalPokemon.push(dataPokemon);
     getPokemonTypes(pokemonData.length - 1);
     updateLiveCounter(pokemonData.length, totalPokemonToLoad);
   }
@@ -188,17 +190,13 @@ function displayMoves() {
   }
 }
 
-function displayStats() {
-  let stats = document.getElementById("");
-}
-
 function openPokemonDetails(i) {
   let container = document.getElementById("pokemon-overlay");
   container.classList.remove("d-none");
 
-  let currentId = pokemon[i].id;
+  let currentId = pokemonData[i].id;
   console.log(currentId);
-
+  
   container.innerHTML = openPokemonDetailsTemplate(pokemonData, i);
   displayMoves();
 }
@@ -229,9 +227,11 @@ function searchPokemon() {
     let filtered = pokemonData.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(input)
     );
+    pokemonData = filtered;
     displayPokemon(filtered);
   } else {
-    displayPokemon();
+    pokemonData = [...originalPokemon];
+    displayPokemon(pokemonData);
   }
 }
 
