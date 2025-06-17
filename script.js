@@ -194,9 +194,6 @@ function openPokemonDetails(i) {
   let container = document.getElementById("pokemon-overlay");
   container.classList.remove("d-none");
 
-  let currentId = pokemonData[i].id;
-  console.log(currentId);
-  
   container.innerHTML = openPokemonDetailsTemplate(pokemonData, i);
   displayMoves();
 }
@@ -258,19 +255,21 @@ function closeOverlay() {
 }
 
 function nextPokemon(i) {
-  if (pokemonData[i].id + 1 <= pokemonData.length) {
-    i++;
-  } else {
+  if (i + 1 >= pokemonData.length) {
     i = 0;
+  } else {
+    i++;
   }
   openPokemonDetails(i);
   setBackgroundToOverlayCard(i);
 }
 
 function previousPokemon(i) {
-  if (pokemonData[i].id - 1 !== 0) {
+  if (pokemonData[i] !== 0) {
     i--;
-  } else {
+  }
+
+  if (i === -1) {
     i = pokemonData.length - 1;
   }
   openPokemonDetails(i);
