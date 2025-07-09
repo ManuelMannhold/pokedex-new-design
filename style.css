@@ -186,6 +186,7 @@ header {
 
 .card-container {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     width: 100%;
@@ -240,7 +241,7 @@ header {
 
 .pokemon-details {
     width: 50%;
-    height: 70%;
+    height: 80%;
     border: 1px solid black;
     position: relative;
     display: flex;
@@ -390,5 +391,15 @@ header {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media(max-width: 500px) {
+    .pokemon-card {
+        width: 100%;
+    }
+
+    .pokemon-info-big-card-moves {
+        justify-content: center;
     }
 }
