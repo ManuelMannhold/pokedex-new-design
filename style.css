@@ -157,6 +157,7 @@ header {
     border-radius: 15px;
     font-size: clamp(20px, 1.5rem, 40px);
     min-height: 300px;
+    transition: transform 0.15s ease, box-shadow 0.3s ease;
 
     header {
         display: flex;
@@ -174,7 +175,9 @@ header {
 }
 
 .pokemon-card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05) rotate(-2deg);
+    /* Vergrößert und rotiert leicht */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .pokemon-image-card {
