@@ -70,6 +70,9 @@ h1 {
 h3 {
     text-shadow: 1px 1px 2px white;
     font-size: clamp(30px, 3.5vw, 40px);
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
 
 #my-chart {
@@ -125,9 +128,10 @@ header {
 .header-name-id-span {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     text-transform: capitalize;
+    position: relative;
 }
 
 #content {
