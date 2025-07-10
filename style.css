@@ -69,10 +69,7 @@ h1 {
 
 h3 {
     text-shadow: 1px 1px 2px white;
-    font-size: clamp(30px, 3.5vw, 40px);
-    position: absolute;
-    right: 5px;
-    top: 5px;
+    font-size: clamp(30px, 40px, 50px);
 }
 
 #my-chart {
@@ -131,7 +128,7 @@ header {
     justify-content: center;
     width: 100%;
     text-transform: capitalize;
-    position: relative;
+    flex-wrap: wrap;
 }
 
 #content {
