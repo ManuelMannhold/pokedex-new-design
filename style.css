@@ -155,7 +155,7 @@ header {
     background: linear-gradient(135deg, var(--type1-color) 50%, var(--type2-color) 50%);
     cursor: pointer;
     border-radius: 15px;
-    font-size: clamp(20px, 1.5rem, 40px);
+    font-size: clamp(20px, 40px, 50px);
     min-height: 300px;
     transition: transform 0.15s ease, box-shadow 0.3s ease;
 
@@ -168,10 +168,6 @@ header {
             max-width: 40%;
         }
     }
-}
-
-.pokemon-details-overlay-image {
-    max-width: 30%;
 }
 
 .pokemon-card:hover {
@@ -257,8 +253,8 @@ header {
 
 .pokemon-details-id {
     position: absolute;
-    top: 5px;
     right: 5px;
+    top: 5px;
 }
 
 .section-overlay-card {
@@ -304,7 +300,9 @@ header {
     display: flex;
     flex-direction: row-reverse;
     align-items: flex-start;
+    justify-content: space-evenly;
     height: 25%;
+    position: relative;
 }
 
 .pokeball {
