@@ -145,7 +145,7 @@ header {
 }
 
 .pokemon-card {
-    width: clamp(200px, 40%, 400px);
+    width: 400px;
     display: flex;
     flex-direction: column;
     gap: 10px;
