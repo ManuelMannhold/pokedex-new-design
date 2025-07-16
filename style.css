@@ -42,6 +42,7 @@ button {
     color: black;
     font-weight: 700;
     cursor: pointer;
+    font-size: 32px;
 }
 
 input {
@@ -277,6 +278,7 @@ header {
     display: flex;
     justify-content: center;
     gap: 10px;
+    padding: 5px;
 }
 
 #loading-spinner {
