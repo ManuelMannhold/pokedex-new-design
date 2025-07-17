@@ -11,4 +11,14 @@
     input {
         font-size: 32px;
     }
+
+    .pokemon-moves {
+        font-size: 32px;
+    }
+}
+
+@media(max-width: 500px) {
+    button {
+        font-size: 16px;
+    }
 }
