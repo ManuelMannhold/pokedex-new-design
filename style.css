@@ -54,6 +54,13 @@ input {
     font-size: 24px;
 }
 
+.section-overlay-card-span {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
 .subheadline {
     color: white;
 }
