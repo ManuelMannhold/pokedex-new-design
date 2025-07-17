@@ -4,3 +4,11 @@
         align-items: center;
     }
 }
+
+@media(min-width: 1000px) {
+
+    button,
+    input {
+        font-size: 32px;
+    }
+}
