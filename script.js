@@ -297,12 +297,3 @@ function load() {
     pokemonData = JSON.parse(savedData);
   }
 }
-
-function setFontSize() {
-  let buttons = document.querySelectorAll('.btn');
-  if(window.innerWidth < 500) {
-    buttons.innerHTML = `
-      + 50
-    `;
-  }
-}
