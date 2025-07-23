@@ -22,3 +22,9 @@
         font-size: 16px;
     }
 }
+
+@media(max-height: 800px) {
+    .subheadline {
+        display: none;
+    }
+}
