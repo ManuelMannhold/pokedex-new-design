@@ -26,11 +26,7 @@ p {
 }
 
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assests/img/pokemon-1624022_1280.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #d32f2f, #b71c1c, #212121);
     transition: background-position 0.5s ease;
 }
 
@@ -43,6 +39,7 @@ button {
     font-weight: 700;
     cursor: pointer;
     font-size: 24px;
+    box-shadow: 1px 1px 5px black;
 }
 
 input {
@@ -73,7 +70,7 @@ button:hover {
 h1 {
     font-size: 48px;
     color: red;
-    text-shadow: 1px 1px 2px white;
+    text-shadow: 1px 1px 2px black;
 }
 
 h3 {
@@ -168,6 +165,7 @@ header {
     font-size: clamp(20px, 30px, 50px);
     min-height: 300px;
     transition: transform 0.15s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px black;
 
     header {
         display: flex;
