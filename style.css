@@ -260,6 +260,10 @@ header {
     height: 100%;
 }
 
+.pokemon-details-overlay img {
+    max-width: 70%;
+}
+
 .pokemon-details-id {
     position: absolute;
     right: 5px;
