@@ -221,14 +221,12 @@ function searchPokemon() {
   let input = document.getElementById("input-pokemon").value.toLowerCase();
 
   if (input !== "") {
-    let filtered = pokemonData.filter((pokemon) =>
+    const filtered = originalPokemon.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(input)
     );
-    pokemonData = filtered;
     displayPokemon(filtered);
   } else {
-    pokemonData = [...originalPokemon];
-    displayPokemon(pokemonData);
+    displayPokemon(originalPokemon);
   }
 }
 
