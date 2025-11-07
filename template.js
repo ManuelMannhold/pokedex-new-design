@@ -45,7 +45,7 @@ function openPokemonDetailsTemplate(pokemonData, i) {
               </span>
               </header>
               <section class="section-overlay-card">
-              <span class="section-overlay-card-span">
+              <span>
                     <button onclick="displayMoves()">Moves</button>
                     <button onclick="showStatsOnChart(${i})">Stats</button>
               </span>

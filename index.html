@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="media.css">
-    <link rel="shortcut icon" href="./assests/img/pokemon-favicon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css" />
+    <link
+      rel="shortcut icon"
+      href="./assests/img/pokemon-favicon.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <script src="script.js"></script>
     <script src="chart.js"></script>
     <script src="template.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+  </head>
 
-<body translate="no" onload="init(); searchPokemon()">
+  <body onload="init(); searchPokemon()">
     <header>
-        <h1>Pokedex</h1>
-        <h2 class="subheadline">Gotta Catch'em all</h2>
-        <form onsubmit="return false">
-            <div>
-                <label for="input-pokemon"></label>
-                <input type="text" id="input-pokemon" autocomplete="off" placeholder="Pokemon eingeben....">
-            </div>
-            <div class=" load-more-input">
-                <button class="btn" onclick="loadMore(20)">Lade 20 mehr</button>
-                <button class="btn" onclick="loadMore(50)">Lade 50 mehr</button>
-                <button class="btn" onclick="loadMore(100)">Lade 100 mehr</button>
-            </div>
-            <div class="load-add">
-                <button onclick="displayOverlay()">Lade Alle Pokemon</button>
-            </div>
-        </form>
+      <h1>Pokedex</h1>
+      <h2 class="subheadline">Gotta Catch'em all</h2>
+      <form onsubmit="return false">
+        <div>
+          <label for="input-pokemon"></label>
+          <input
+            type="text"
+            id="input-pokemon"
+            autocomplete="off"
+            placeholder="Pokemon eingeben...."
+          />
+        </div>
+        <div class="load-more-input">
+          <button onclick="loadMore(20)">Lade 20 mehr</button>
+          <button onclick="loadMore(50)">Lade 50 mehr</button>
+          <button onclick="loadMore(100)">Lade 100 mehr</button>
+        </div>
+        <div class="load-add">
+          <button onclick="displayOverlay()">Lade Alle Pokemon</button>
+        </div>
+      </form>
     </header>
     <section>
-        <div id="content">
-        </div>
-        <div id="pokemon-overlay" class="d-none">
-            <div id="pokemon-details"></div>
-        </div>
+      <div id="content"></div>
+      <div id="pokemon-overlay" class="d-none">
+        <div id="pokemon-details"></div>
+      </div>
     </section>
     <div id="loading-spinner" class="d-none">
-        <div class="pokeball"></div>
-        <div id="loaded-pokemon"></div>
+      <div class="pokeball"></div>
+      <div id="loaded-pokemon"></div>
     </div>
     <div id="overlay-load-all-pokemon" class="d-none">
-        <div class="overlay-message">
-            <span>Sicher alle Pokemon Laden?</span>
-            <span>Es wird einige Zeit dauern und den Datenverbrauch erhöhen</span>
-            <div class="buttons-overlay-message">
-                <button id="load-all" onclick="loadAllPokemon()">Ja</button>
-                <button id="stop-load" onclick="closeOverlay()">Nein</button>
-            </div>
+      <div class="overlay-message">
+        <span>Sicher alle Pokemon Laden?</span>
+        <span>Es wird einige Zeit dauern und den Datenverbrauch erhöhen</span>
+        <div class="buttons-overlay-message">
+          <button id="load-all" onclick="loadAllPokemon()">Ja</button>
+          <button id="stop-load" onclick="closeOverlay()">Nein</button>
         </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
