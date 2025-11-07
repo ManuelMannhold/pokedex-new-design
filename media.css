@@ -4,3 +4,9 @@
     align-items: center;
   }
 }
+
+@media (max-width: 500px) {
+  .pokemon-card {
+    width: 80%;
+  }
+}
