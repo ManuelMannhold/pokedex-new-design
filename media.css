@@ -10,3 +10,19 @@
     width: 80%;
   }
 }
+
+@media (max-width: 568px) {
+  .load-more-input {
+    flex-wrap: wrap;
+  }
+
+  .subheadline {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-container {
+    flex-direction: column-reverse;
+  }
+}
