@@ -1,8 +1,6 @@
 function displayPokemonTemplate(pokemonData, i) {
   return `
-            <div class="pokemon-card" onclick="openPokemonDetails(${
-              (pokemonData, i)
-            }); setBackgroundToOverlayCard(${i})" id="poke-card${i}">
+            <div class="pokemon-card" onclick="openPokemonDetails(${i}); setBackgroundToOverlayCard(${i})" id="poke-card${i}">
               <header>
               <span class="header-name-id-span">
               <h2>${pokemonData[i].name}</h2>
@@ -30,17 +28,17 @@ function displayPokemonTemplate(pokemonData, i) {
         `;
 }
 
-function openPokemonDetailsTemplate(pokemonData, i) {
+function openPokemonDetailsTemplate(filteredPokemon, i) {
   return `
   <div class="card-container">
   <span class="close-overlay" onclick="closeOverlayDetails()">X</span>
   <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
     <div class="pokemon-details" id="poke-card-overlay${i}">
               <header class="pokemon-detail-header">
-              <h3 class="pokemon-details-id">#${pokemonData[i].id}</h3>
+              <h3 class="pokemon-details-id">#${filteredPokemon[i].id}</h3>
               <span class="pokemon-details-overlay">
               <img class="pokemon-details-overlay-image" src="${
-                pokemonData[i].sprites.other.dream_world.front_default
+                filteredPokemon[i].sprites.other.dream_world.front_default
               }">
               </span>
               </header>
