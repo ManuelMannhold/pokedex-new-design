@@ -287,12 +287,12 @@ function getPrimaryColor(pokemonData) {
   return typeColors[type] || "#A8A878";
 }
 
-function save() {
+function saveToLocalStorage() {
   const dataToSave = JSON.stringify(pokemonData);
   localStorage.setItem("pokemonData", dataToSave);
 }
 
-function load() {
+function loadFromLocalStorage() {
   const savedData = localStorage.getItem("pokemonData");
   if (savedData) {
     pokemonData = JSON.parse(savedData);
