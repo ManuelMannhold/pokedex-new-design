@@ -1,3 +1,9 @@
+@media (min-width: 1220px) {
+  .header-name-id-span {
+    font-size: 40px;
+  }
+}
+
 @media (max-width: 670px) {
   .header-name-id-span {
     flex-direction: column;
