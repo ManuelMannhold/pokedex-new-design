@@ -148,7 +148,8 @@ header {
 }
 
 .pokemon-card {
-  width: clamp(200px, 40%, 400px);
+  width: 30%;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -164,7 +165,6 @@ header {
   cursor: pointer;
   border-radius: 15px;
   font-size: clamp(20px, 1.5rem, 40px);
-  min-height: 300px;
 
   header {
     display: flex;

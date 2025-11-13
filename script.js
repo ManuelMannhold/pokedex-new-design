@@ -219,7 +219,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function searchPokemon() {
-  let input = document.getElementById("input-pokemon").value.toLowerCase();
+  let input = document
+    .getElementById("input-pokemon")
+    .value.trim()
+    .toLowerCase();
 
   if (input !== "") {
     const filtered = originalPokemon.filter((pokemon) =>
