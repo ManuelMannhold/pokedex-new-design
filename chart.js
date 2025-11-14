@@ -23,6 +23,8 @@ function renderChart(pokemonData) {
       ],
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           display: true,

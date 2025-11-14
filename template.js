@@ -11,19 +11,7 @@ function displayPokemonTemplate(pokemonData, i) {
                 pokemonData[i].sprites.other.dream_world.front_default
               }">
               </span>
-              <div>
-                ${getPokemonTypes(i)}
-              </div>
-              <span class="cries-sound" onclick="getPokemonCries(${i}, event)">🔊</span>
-              </header>
-                <div class="pokemon-info">
-                  <span>
-                    <b>Gewicht:</b> ${pokemonData[i].weight / 10} Kg
-                  </span>
-                  <span>
-                    <b>Größe:</b> ${pokemonData[i].height * 10} cm
-                  </span>
-                </div>
+              
             </div>
         `;
 }
@@ -37,7 +25,7 @@ function openPokemonDetailsTemplate(filteredPokemon, i) {
               <header class="pokemon-detail-header">
               <h3 class="pokemon-details-id">#${filteredPokemon[i].id}</h3>
               <span class="pokemon-details-overlay">
-              <img class="pokemon-details-overlay-image" src="${
+              <img class="pokemon-details-overlay-image" alt="picture from Pokemon" src="${
                 filteredPokemon[i].sprites.other.dream_world.front_default
               }">
               </span>

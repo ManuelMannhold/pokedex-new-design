@@ -183,12 +183,11 @@ function displayMoves() {
   let display = document.getElementById("display-pokemon-info");
   let chart = document.getElementById("my-chart");
 
-  if (!chart) {
-    display.classList.remove("d-none");
-  } else {
+  if (chart) {
     chart.classList.add("d-none");
-    display.classList.remove("d-none");
   }
+
+  display.classList.remove("d-none");
 }
 
 function openPokemonDetails(i) {
@@ -237,14 +236,14 @@ function searchPokemon() {
 }
 
 async function showStatsOnChart(i) {
-  let pokemonId = pokemonData[i].id;
-  let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-  let pokemonIds = await response.json();
   let container = document.getElementById("my-chart");
   let moves = document.getElementById("display-pokemon-info");
   moves.classList.add("d-none");
 
   container.classList.remove("d-none");
+  let pokemonId = pokemonData[i].id;
+  let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+  let pokemonIds = await response.json();
   renderChart(pokemonIds);
 }
 
