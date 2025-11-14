@@ -6,6 +6,7 @@ let pokemonTypes = [];
 let allPokemon = [];
 let originalPokemon = [];
 let filteredPokemon;
+let myPokemonChart = null;
 let totalPokemonToLoad = 20;
 const typeColors = {
   fire: "#F08030",

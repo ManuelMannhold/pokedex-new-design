@@ -1,59 +1,59 @@
 function renderChart(pokemonData) {
-  const ctx = document.getElementById(`my-chart`);
+  const ctx = document.getElementById("my-chart");
   const mainColor = getPrimaryColor(pokemonData);
 
-  new Chart(ctx, {
+  const hp = Hp(pokemonData);
+  const atk = attack(pokemonData);
+  const def = defense(pokemonData);
+  const spAtk = speedAttack(pokemonData);
+  const spDef = speedDefense(pokemonData);
+  const spd = speed(pokemonData);
+
+  if (myPokemonChart) {
+    myPokemonChart.destroy();
+  }
+
+  myPokemonChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["HP", "Attack", "Defense", "Sp.Attack", "Sp.Defense", "Speed"],
+      labels: ["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"],
       datasets: [
         {
-          data: [
-            Hp(pokemonData),
-            attack(pokemonData),
-            defense(pokemonData),
-            speedAttack(pokemonData),
-            speedDefense(pokemonData),
-            speed(pokemonData),
-          ],
+          label: "Stats",
+          data: [hp, atk, def, spAtk, spDef, spd],
+          backgroundColor: "black",
+          borderColor: mainColor,
           borderWidth: 2,
-          borderColor: "#fff",
-          backgroundColor: mainColor,
-        },
-      ],
+          borderRadius: 8,
+        }
+      ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      indexAxis: "y",
       scales: {
         x: {
           display: true,
-          ticks: {
-            color: "#000",
+          max: 255,
+          grid: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.8)"
           },
+          ticks: {
+            color: "#555",
+            font: { size: 14 }
+          }
         },
         y: {
-          grid: {
-            display: false,
-          },
+          grid: { display: false },
           ticks: {
-            color: "#000",
-          },
-        },
-      },
-      aspectRatio: 0,
-      indexAxis: "y",
-      plugins: {
-        title: {
-          display: true,
-          text: "POKEMON STATS",
-          color: "#000",
-        },
-        legend: {
-          display: false,
-        },
-      },
-    },
+            color: "#333",
+            font: { size: 16, weight: "bold" }
+          }
+        }
+      }
+    }
   });
 }
 
