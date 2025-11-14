@@ -36,6 +36,8 @@ async function init() {
   await fetchAllPokemon();
   displayPokemon();
   toggleLoadingSpinner();
+  console.log(pokemonData);
+  
 }
 
 async function fetchPokemon(offset, limit) {

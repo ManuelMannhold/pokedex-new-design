@@ -74,6 +74,16 @@ h3 {
   font-size: clamp(30px, 3.5vw, 40px);
 }
 
+.header-overlay-characteristics {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  height: auto;
+  font-weight: bold;
+  font-size: 24px;
+}
+
 #my-chart {
   width: 100%;
   height: 400px;
