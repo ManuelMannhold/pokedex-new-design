@@ -32,3 +32,9 @@
     flex-direction: column-reverse;
   }
 }
+
+@media (max-height: 715px) {
+  .section-overlay-card {
+    height: 60%;
+  }
+}
