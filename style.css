@@ -90,7 +90,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto 0; 
+  margin: 20px auto 0;
   max-width: 600px;
 }
 
@@ -114,6 +114,7 @@ h3 {
   top: 20px;
   font-size: 40px;
   color: white;
+  cursor: pointer;
 }
 
 .close-overlay:hover {
@@ -124,14 +125,14 @@ h3 {
 .next-pokemon {
   font-size: 35px;
   cursor: pointer;
-  transition: .2s ease;
+  transition: 0.2s ease;
   color: #444;
 }
 
 .previous-pokemon:hover,
 .next-pokemon:hover {
   transform: scale(1.2);
-  color: #78C850;
+  color: #78c850;
 }
 
 form {
@@ -183,16 +184,19 @@ header {
   cursor: pointer;
 
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-  transition: transform .15s ease, box-shadow .15s ease, background-position .3s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-position 0.3s ease;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 
-  background: linear-gradient(135deg,
-      var(--type1-color) 45%,
-      var(--type2-color) 0);
+  background: linear-gradient(
+    135deg,
+    var(--type1-color) 45%,
+    var(--type2-color) 0
+  );
   background-size: 200% 200%;
 }
 
@@ -249,7 +253,7 @@ header {
   overflow: scroll;
   scrollbar-color: red orange;
   scrollbar-width: thin;
-  }
+}
 
 .card-container {
   display: flex;
@@ -286,7 +290,7 @@ header {
   justify-content: center;
   overflow-y: auto;
   height: 100%;
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .pokemon-moves {
@@ -295,7 +299,7 @@ header {
   padding: 10px 18px;
   border-radius: 25px;
   font-size: clamp(12px, 1vw, 16px);
-  transition: .2s ease;
+  transition: 0.2s ease;
   white-space: nowrap;
 }
 
@@ -334,6 +338,7 @@ header {
   display: flex;
   flex-direction: column;
   padding: 0 40px 40px 40px;
+  position: relative;
 }
 
 .pokemon-details-overlay {
@@ -372,7 +377,7 @@ header {
 }
 
 .section-overlay-card button.active {
-  background: var(--type1-color, #78C850);
+  background: var(--type1-color, #78c850);
   color: white;
 }
 
@@ -446,7 +451,7 @@ header {
 }
 
 .section-overlay-card button.active {
-  background: #78C850;
+  background: #78c850;
   /* Grass */
   color: white;
 }
@@ -513,5 +518,18 @@ header {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+#favorite-icon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  img {
+    width: 100%;
   }
 }

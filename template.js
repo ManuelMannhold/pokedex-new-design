@@ -20,6 +20,9 @@ function openPokemonDetailsTemplate(filteredPokemon, i) {
   <span class="close-overlay" onclick="closeOverlayDetails()">X</span>
   <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
     <div class="pokemon-details" id="poke-card-overlay${i}">
+    <div id="favorite-icon" onclick="toggleHeartIcon">
+              <img src="assests/img/empty-heart.png" alt="empty-heart">
+            </div>
               <header class="pokemon-detail-header">
               <h3 class="pokemon-details-id">#${filteredPokemon[i].id}</h3>
               <span class="pokemon-details-overlay">
