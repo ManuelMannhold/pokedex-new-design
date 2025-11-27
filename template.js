@@ -7,8 +7,7 @@ function displayPokemonTemplate(pokemonData, i) {
               <h3>#${pokemonData[i].id}</h3>
               </span>
               <span class="pokemon-image-card">
-              <img src="${pokemonData[i].sprites.other.dream_world.front_default
-    }">
+              <img src="${pokemonData[i].sprites.other.dream_world.front_default}">
               </span>
               
             </div>
@@ -22,15 +21,16 @@ function openPokemonDetailsTemplate(filteredPokemon, i) {
   <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
     <div class="pokemon-details" id="poke-card-overlay${i}">
               <header class="pokemon-detail-header">
+              <h3 class="pokemon-details-id">#${filteredPokemon[i].id}</h3>
+              <span class="pokemon-details-overlay">
+              <img class="pokemon-details-overlay-image" alt="picture from Pokemon" src="${
+                filteredPokemon[i].sprites.other.dream_world.front_default
+              }">
+              </span>
               <div class="header-overlay-characteristics">
               <span>Weight: ${filteredPokemon[i].weight} </span>
               <span>Height: ${filteredPokemon[i].height}</span>
               </div>
-              <h3 class="pokemon-details-id">#${filteredPokemon[i].id}</h3>
-              <span class="pokemon-details-overlay">
-              <img class="pokemon-details-overlay-image" alt="picture from Pokemon" src="${filteredPokemon[i].sprites.other.dream_world.front_default
-    }">
-              </span>
               </header>
               <section class="section-overlay-card">
               <span>

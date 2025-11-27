@@ -5,6 +5,7 @@ let pokemonData = [];
 let pokemonTypes = [];
 let allPokemon = [];
 let originalPokemon = [];
+let favoritPokemon = [];
 let filteredPokemon;
 let myPokemonChart = null;
 let totalPokemonToLoad = 20;
@@ -37,7 +38,6 @@ async function init() {
   displayPokemon();
   toggleLoadingSpinner();
   console.log(pokemonData);
-  
 }
 
 async function fetchPokemon(offset, limit) {
@@ -242,7 +242,6 @@ async function showStatsOnChart(i) {
   let container = document.getElementById("my-chart");
   let moves = document.getElementById("display-pokemon-info");
   moves.classList.add("d-none");
-
   container.classList.remove("d-none");
   let pokemonId = pokemonData[i].id;
   let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
