@@ -2,6 +2,7 @@ function displayPokemonTemplate(pokemonData, i) {
   return `
             <div class="pokemon-card" onclick="openPokemonDetails(${i}); setBackgroundToOverlayCard(${i})" id="poke-card${i}">
               <header>
+              <span> </span>
               <span class="header-name-id-span">
               <h2>${pokemonData[i].name}</h2>
               <h3>#${pokemonData[i].id}</h3>

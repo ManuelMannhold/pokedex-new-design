@@ -217,8 +217,6 @@ function toggleLoadingSpinner() {
 function toggleHeartIcon() {
   let heartIcon = document.getElementById("favorite-icon");
   let img = heartIcon.querySelector("img");
-  
-  // Get the current pokemon ID from the overlay
   let pokemonDetailsDiv = document.querySelector(".pokemon-details");
   let pokemonId = pokemonDetailsDiv ? pokemonDetailsDiv.id.replace("poke-card-overlay", "") : null;
   
