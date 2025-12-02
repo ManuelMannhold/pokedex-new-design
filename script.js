@@ -214,6 +214,48 @@ function toggleLoadingSpinner() {
   }
 }
 
+function toggleHeartIcon() {
+  let heartIcon = document.getElementById("favorite-icon");
+  let img = heartIcon.querySelector("img");
+  
+  // Get the current pokemon ID from the overlay
+  let pokemonDetailsDiv = document.querySelector(".pokemon-details");
+  let pokemonId = pokemonDetailsDiv ? pokemonDetailsDiv.id.replace("poke-card-overlay", "") : null;
+  
+  if (img.src.includes("empty-heart")) {
+    img.src = "assests/img/red-heart.png";
+    heartIcon.classList.add("favorite-active");
+    if (pokemonId !== null) {
+      addFavorite(pokemonId);
+    }
+  } else {
+    img.src = "assests/img/empty-heart.png";
+    heartIcon.classList.remove("favorite-active");
+    if (pokemonId !== null) {
+      removeFavorite(pokemonId);
+    }
+  }
+}
+
+function addFavorite(pokemonId) {
+  let favorites = JSON.parse(localStorage.getItem("favoritePokemon")) || [];
+  if (!favorites.includes(pokemonId)) {
+    favorites.push(pokemonId);
+    localStorage.setItem("favoritePokemon", JSON.stringify(favorites));
+  }
+}
+
+function removeFavorite(pokemonId) {
+  let favorites = JSON.parse(localStorage.getItem("favoritePokemon")) || [];
+  favorites = favorites.filter(id => id !== pokemonId);
+  localStorage.setItem("favoritePokemon", JSON.stringify(favorites));
+}
+
+function isFavorite(pokemonId) {
+  let favorites = JSON.parse(localStorage.getItem("favoritePokemon")) || [];
+  return favorites.includes(pokemonId);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("input-pokemon")
