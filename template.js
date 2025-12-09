@@ -16,37 +16,40 @@ function displayPokemonTemplate(pokemonData, i) {
 }
 
 function openPokemonDetailsTemplate(filteredPokemon, i) {
+  let pokemonHp = getPokemonHp(filteredPokemon[i].name);
   const pokemonId = i.toString();
-  const heartImage = isFavorite(pokemonId) ? "assests/img/red-heart.png" : "assests/img/empty-heart.png";
+  const heartImage = isFavorite(pokemonId)
+    ? "assests/img/red-heart.png"
+    : "assests/img/empty-heart.png";
   const favoriteClass = isFavorite(pokemonId) ? "favorite-active" : "";
-  
+
   return `
   <div class="card-container">
   <span class="close-overlay" onclick="closeOverlayDetails()">X</span>
   <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
     <div class="pokemon-details" id="poke-card-overlay${i}">
-    <div id="favorite-icon" onclick="toggleHeartIcon()" class="${favoriteClass}">
-              <img src="${heartImage}" alt="heart-icon">
-            </div>
+
               <header class="pokemon-detail-header">
-              <h3 class="pokemon-details-id">#${filteredPokemon[i].id}</h3>
+              <h3 class="pokemon-details-id">#000${filteredPokemon[i].id}</h3>
               <span class="pokemon-details-overlay">
               <img class="pokemon-details-overlay-image" alt="picture from Pokemon" src="${
                 filteredPokemon[i].sprites.other.dream_world.front_default
               }">
               </span>
-              <div class="header-overlay-characteristics">
-              <span>Weight: ${filteredPokemon[i].weight} </span>
-              <span>Height: ${filteredPokemon[i].height}</span>
-              </div>
               </header>
               <section class="section-overlay-card">
-              <span>
+              <span class="overlay-buttons-pokemon" id="overlay-buttons">
+                  <button>About</button>
                     <button onclick="displayMoves()">Moves</button>
                     <button onclick="showStatsOnChart(${i})">Stats</button>
               </span>
              
                 <div class="pokemon-info">
+                <span>
+                  <p>Height: ${filteredPokemon[i].height}</p>
+                  <p>Weight: ${filteredPokemon[i].weight}</p>
+                  <p>Experience: ${filteredPokemon[i].base_experience}</p>
+                </span>
                   <span class="pokemon-info-big-card-moves d-none"  id="display-pokemon-info">
                     ${getPokemonMoves(i)}
                   </span>

@@ -65,7 +65,14 @@ async function fetchPokemonDetails(limit) {
     originalPokemon.push(dataPokemon);
     getPokemonTypes(pokemonData.length - 1);
     updateLiveCounter(pokemonData.length, totalPokemonToLoad);
+    console.log(pokemonData);
   }
+}
+
+async function getPokemonHp(name) {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  const data = await res.json();
+  return data.stats.find((stat) => stat.stat.name === "hp").base_stat;
 }
 
 function updateLiveCounter(count, limit) {
@@ -193,12 +200,26 @@ function displayMoves() {
   display.classList.remove("d-none");
 }
 
+function displayStats() {
+  let overlayButtons = document.getElementById("overlay-buttons");
+  let display = document.getElementById("display-pokemon-info");
+  let chart = document.getElementById("my-chart");
+
+  if (display) {
+    display.classList.add("d-none");
+  }
+
+  if (chart) {
+    chart.classList.remove("d-none");
+  }
+}
+
 function openPokemonDetails(i) {
   let container = document.getElementById("pokemon-overlay");
   container.classList.remove("d-none");
 
   container.innerHTML = openPokemonDetailsTemplate(filteredPokemon, i);
-  displayMoves();
+  displayStats();
 }
 
 function closeOverlayDetails() {
@@ -218,8 +239,10 @@ function toggleHeartIcon() {
   let heartIcon = document.getElementById("favorite-icon");
   let img = heartIcon.querySelector("img");
   let pokemonDetailsDiv = document.querySelector(".pokemon-details");
-  let pokemonId = pokemonDetailsDiv ? pokemonDetailsDiv.id.replace("poke-card-overlay", "") : null;
-  
+  let pokemonId = pokemonDetailsDiv
+    ? pokemonDetailsDiv.id.replace("poke-card-overlay", "")
+    : null;
+
   if (img.src.includes("empty-heart")) {
     img.src = "assests/img/red-heart.png";
     heartIcon.classList.add("favorite-active");
@@ -245,7 +268,7 @@ function addFavorite(pokemonId) {
 
 function removeFavorite(pokemonId) {
   let favorites = JSON.parse(localStorage.getItem("favoritePokemon")) || [];
-  favorites = favorites.filter(id => id !== pokemonId);
+  favorites = favorites.filter((id) => id !== pokemonId);
   localStorage.setItem("favoritePokemon", JSON.stringify(favorites));
 }
 
