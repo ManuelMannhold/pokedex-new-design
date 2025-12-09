@@ -337,15 +337,24 @@ header {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0 40px 40px 40px;
   position: relative;
 }
 
 .overlay-buttons-pokemon {
   display: flex;
-  flex-direction: column;
   gap: 15px;
   border-bottom: 1px solid lightgrey;
+}
+
+.pokemon-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pokemon-stats span {
+  display: flex;
 }
 
 .pokemon-details-overlay {

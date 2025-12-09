@@ -39,16 +39,22 @@ function openPokemonDetailsTemplate(filteredPokemon, i) {
               </header>
               <section class="section-overlay-card">
               <span class="overlay-buttons-pokemon" id="overlay-buttons">
-                  <button>About</button>
+                    <button>About</button>
                     <button onclick="displayMoves()">Moves</button>
                     <button onclick="showStatsOnChart(${i})">Stats</button>
               </span>
              
                 <div class="pokemon-info">
-                <span>
-                  <p>Height: ${filteredPokemon[i].height}</p>
-                  <p>Weight: ${filteredPokemon[i].weight}</p>
-                  <p>Experience: ${filteredPokemon[i].base_experience}</p>
+                <span class="pokemon-stats">
+                  <span><h2>Height: </h2> <h3>${
+                    filteredPokemon[i].height * 10
+                  } cm </h3></span>
+                  <span><h2>Weight: </h2> <h3>${
+                    filteredPokemon[i].weight / 10
+                  } kg </h3></span>
+                  <span><h2>Experience: </h2> <h3>${
+                    filteredPokemon[i].base_experience
+                  }</h3></span>
                 </span>
                   <span class="pokemon-info-big-card-moves d-none"  id="display-pokemon-info">
                     ${getPokemonMoves(i)}
