@@ -16,13 +16,6 @@ function displayPokemonTemplate(pokemonData, i) {
 }
 
 function openPokemonDetailsTemplate(filteredPokemon, i) {
-  let pokemonHp = getPokemonHp(filteredPokemon[i].name);
-  const pokemonId = i.toString();
-  const heartImage = isFavorite(pokemonId)
-    ? "assests/img/red-heart.png"
-    : "assests/img/empty-heart.png";
-  const favoriteClass = isFavorite(pokemonId) ? "favorite-active" : "";
-
   return `
   <div class="card-container">
   <span class="close-overlay" onclick="closeOverlayDetails()">X</span>
@@ -39,13 +32,13 @@ function openPokemonDetailsTemplate(filteredPokemon, i) {
               </header>
               <section class="section-overlay-card">
               <span class="overlay-buttons-pokemon" id="overlay-buttons">
-                    <button>About</button>
+                    <button onclick="displayAbout()">About</button>
                     <button onclick="displayMoves()">Moves</button>
                     <button onclick="showStatsOnChart(${i})">Stats</button>
               </span>
              
                 <div class="pokemon-info">
-                <span class="pokemon-stats">
+                <span class="pokemon-stats" id="display-pokemon-about">
                   <span><h2>Height: </h2> <h3>${
                     filteredPokemon[i].height * 10
                   } cm </h3></span>

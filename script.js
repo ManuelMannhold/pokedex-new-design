@@ -115,7 +115,7 @@ function getPokemonMoves(i) {
       let moves = pokemonData[i].moves[j].move.name;
 
       pokeMoves += `
-        <span class="pokemon-moves">${moves}</span>
+        <span class="pokemon-moves">"${moves}"</span>
     `;
     }
   }
@@ -190,28 +190,33 @@ async function displayPokemon(pokemons) {
 }
 
 function displayMoves() {
-  let display = document.getElementById("display-pokemon-info");
-  let chart = document.getElementById("my-chart");
+  const moves = document.getElementById("display-pokemon-info");
+  const about = document.getElementById("display-pokemon-about");
+  const chart = document.getElementById("my-chart");
 
-  if (chart) {
-    chart.classList.add("d-none");
-  }
-
-  display.classList.remove("d-none");
+  if (about) about.classList.add("d-none");
+  if (chart) chart.classList.add("d-none");
+  if (moves) moves.classList.remove("d-none");
 }
 
 function displayStats() {
-  let overlayButtons = document.getElementById("overlay-buttons");
-  let display = document.getElementById("display-pokemon-info");
-  let chart = document.getElementById("my-chart");
+  const moves = document.getElementById("display-pokemon-info");
+  const about = document.getElementById("display-pokemon-about");
+  const chart = document.getElementById("my-chart");
 
-  if (display) {
-    display.classList.add("d-none");
-  }
+  if (moves) moves.classList.add("d-none");
+  if (about) about.classList.add("d-none");
+  if (chart) chart.classList.remove("d-none");
+}
 
-  if (chart) {
-    chart.classList.remove("d-none");
-  }
+function displayAbout() {
+  const moves = document.getElementById("display-pokemon-info");
+  const about = document.getElementById("display-pokemon-about");
+  const chart = document.getElementById("my-chart");
+
+  if (moves) moves.classList.add("d-none");
+  if (chart) chart.classList.add("d-none");
+  if (about) about.classList.remove("d-none");
 }
 
 function openPokemonDetails(i) {
@@ -219,7 +224,7 @@ function openPokemonDetails(i) {
   container.classList.remove("d-none");
 
   container.innerHTML = openPokemonDetailsTemplate(filteredPokemon, i);
-  displayStats();
+  setTimeout(() => displayAbout(), 0);
 }
 
 function closeOverlayDetails() {
@@ -233,48 +238,6 @@ function toggleLoadingSpinner() {
   if (spinner) {
     spinner.classList.toggle("d-none");
   }
-}
-
-function toggleHeartIcon() {
-  let heartIcon = document.getElementById("favorite-icon");
-  let img = heartIcon.querySelector("img");
-  let pokemonDetailsDiv = document.querySelector(".pokemon-details");
-  let pokemonId = pokemonDetailsDiv
-    ? pokemonDetailsDiv.id.replace("poke-card-overlay", "")
-    : null;
-
-  if (img.src.includes("empty-heart")) {
-    img.src = "assests/img/red-heart.png";
-    heartIcon.classList.add("favorite-active");
-    if (pokemonId !== null) {
-      addFavorite(pokemonId);
-    }
-  } else {
-    img.src = "assests/img/empty-heart.png";
-    heartIcon.classList.remove("favorite-active");
-    if (pokemonId !== null) {
-      removeFavorite(pokemonId);
-    }
-  }
-}
-
-function addFavorite(pokemonId) {
-  let favorites = JSON.parse(localStorage.getItem("favoritePokemon")) || [];
-  if (!favorites.includes(pokemonId)) {
-    favorites.push(pokemonId);
-    localStorage.setItem("favoritePokemon", JSON.stringify(favorites));
-  }
-}
-
-function removeFavorite(pokemonId) {
-  let favorites = JSON.parse(localStorage.getItem("favoritePokemon")) || [];
-  favorites = favorites.filter((id) => id !== pokemonId);
-  localStorage.setItem("favoritePokemon", JSON.stringify(favorites));
-}
-
-function isFavorite(pokemonId) {
-  let favorites = JSON.parse(localStorage.getItem("favoritePokemon")) || [];
-  return favorites.includes(pokemonId);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -302,10 +265,14 @@ function searchPokemon() {
 }
 
 async function showStatsOnChart(i) {
-  let container = document.getElementById("my-chart");
-  let moves = document.getElementById("display-pokemon-info");
-  moves.classList.add("d-none");
-  container.classList.remove("d-none");
+  const container = document.getElementById("my-chart");
+  const moves = document.getElementById("display-pokemon-info");
+  const about = document.getElementById("display-pokemon-about");
+
+  if (moves) moves.classList.add("d-none");
+  if (about) about.classList.add("d-none");
+  if (container) container.classList.remove("d-none");
+
   let pokemonId = pokemonData[i].id;
   let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
   let pokemonIds = await response.json();

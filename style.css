@@ -192,11 +192,9 @@ header {
   align-items: center;
   position: relative;
 
-  background: linear-gradient(
-    135deg,
-    var(--type1-color) 45%,
-    var(--type2-color) 0
-  );
+  background: linear-gradient(135deg,
+      var(--type1-color) 45%,
+      var(--type2-color) 0);
   background-size: 200% 200%;
 }
 
@@ -267,12 +265,14 @@ header {
 }
 
 .pokemon-info {
-  padding: 5px;
   font-size: clamp(0.9rem, 1vw, 1.2rem);
   text-align: center;
-  line-height: 1.4;
   margin-top: 10px;
   overflow-y: auto;
+  width: 100%;
+  height: inherit;
+  display: flex;
+  align-items: center;
 }
 
 .pokemon-info span {
@@ -294,17 +294,9 @@ header {
 }
 
 .pokemon-moves {
-  background: #ebebeb;
-  border: 1px solid #ccc;
-  padding: 10px 18px;
-  border-radius: 25px;
   font-size: clamp(12px, 1vw, 16px);
   transition: 0.2s ease;
   white-space: nowrap;
-}
-
-.pokemon-moves:hover {
-  background: #ddd;
 }
 
 #pokemon-overlay {
@@ -344,6 +336,20 @@ header {
   display: flex;
   gap: 15px;
   border-bottom: 1px solid lightgrey;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 32px;
+  padding-top: 20px;
+}
+
+.overlay-buttons-pokemon div {
+  transition: 0.2s ease;  
+  color: rgb(152, 151, 151);
+}
+
+.overlay-buttons-pokemon div:hover {
+  color: #78c850;
+  cursor: pointer;
 }
 
 .pokemon-stats {
@@ -381,6 +387,8 @@ header {
   gap: 10px;
   align-items: center;
   padding-top: 10px;
+  background-color: white;
+  border-radius: 70px 70px 0 0;
 }
 
 .section-overlay-card button {
