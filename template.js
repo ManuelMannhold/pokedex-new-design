@@ -32,9 +32,9 @@ function openPokemonDetailsTemplate(filteredPokemon, i) {
               </header>
               <section class="section-overlay-card">
               <span class="overlay-buttons-pokemon" id="overlay-buttons">
-                    <button onclick="displayAbout()">About</button>
-                    <button onclick="displayMoves()">Moves</button>
-                    <button onclick="showStatsOnChart(${i})">Stats</button>
+                    <div onclick="displayAbout()">About</div>
+                    <div onclick="displayMoves()">Moves</div>
+                    <div onclick="showStatsOnChart(${i})">Stats</div>
               </span>
              
                 <div class="pokemon-info">

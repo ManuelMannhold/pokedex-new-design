@@ -150,7 +150,7 @@ function setPokemonCardBackground() {
     let color1 = typeColors[type1] || "#A8A878";
     let color2 = typeColors[type2] || "#A8A878";
 
-    card.style.background = `linear-gradient(135deg, ${color1} 50%, ${color2} 50%)`;
+    card.style.background = `linear-gradient(135deg, ${color1} 20%, ${color2} 80%)`;
   }
 }
 
@@ -160,12 +160,10 @@ function setBackgroundToOverlayCard(i) {
   let types = pokemonData[i].types;
 
   let type1 = types[0].type.name;
-  let type2 = types[1] ? types[1].type.name : type1;
 
   let color1 = typeColors[type1] || "#A8A878";
-  let color2 = typeColors[type2] || "#A8A878";
 
-  card.style.background = `linear-gradient(135deg, ${color1} 50%, ${color2} 50%)`;
+  card.style.background = `linear-gradient(135deg, ${color1} 50%`;
 }
 
 function getPokemonCries(i, event) {
