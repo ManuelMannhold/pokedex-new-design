@@ -18,19 +18,24 @@ function displayPokemonTemplate(pokemonData, i) {
 function openPokemonDetailsTemplate(filteredPokemon, i) {
   return `
   <div class="card-container">
-  <span class="close-overlay" onclick="closeOverlayDetails()">X</span>
+
   <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
     <div class="pokemon-details" id="poke-card-overlay${i}">
-
+    <span class="close-overlay" onclick="closeOverlayDetails()">X</span>
               <header class="pokemon-detail-header">
               <h3 class="pokemon-details-id">#000${filteredPokemon[i].id}</h3>
               <span class="pokemon-details-overlay">
-              <img class="pokemon-details-overlay-image" alt="picture from Pokemon" src="${
-                filteredPokemon[i].sprites.other.dream_world.front_default
-              }">
+              <h2 class="pokemon-details-name">${filteredPokemon[i].name}</h2>
+              <div class="pokemon-types-overlay" id="pokemon-types-overlay${i}">
+              ${getPokemonTypes(i)}
+              </div>
               </span>
               </header>
               <section class="section-overlay-card">
+              <div class="pokemon-details-overlay-image-container">
+              <img class="pokemon-details-overlay-image" alt="picture from Pokemon" src="${filteredPokemon[i].sprites.other.dream_world.front_default
+    }">
+              </div>
               <span class="overlay-buttons-pokemon" id="overlay-buttons">
                     <div onclick="displayAbout()">About</div>
                     <div onclick="displayMoves()">Moves</div>
@@ -39,15 +44,12 @@ function openPokemonDetailsTemplate(filteredPokemon, i) {
              
                 <div class="pokemon-info">
                 <span class="pokemon-stats" id="display-pokemon-about">
-                  <span><h2>Height: </h2> <h3>${
-                    filteredPokemon[i].height * 10
-                  } cm </h3></span>
-                  <span><h2>Weight: </h2> <h3>${
-                    filteredPokemon[i].weight / 10
-                  } kg </h3></span>
-                  <span><h2>Experience: </h2> <h3>${
-                    filteredPokemon[i].base_experience
-                  }</h3></span>
+                  <span><h2>Height: </h2> <h3>${filteredPokemon[i].height * 10
+    } cm </h3></span>
+                  <span><h2>Weight: </h2> <h3>${filteredPokemon[i].weight / 10
+    } kg </h3></span>
+                  <span><h2>Experience: </h2> <h3>${filteredPokemon[i].base_experience
+    }</h3></span>
                 </span>
                   <span class="pokemon-info-big-card-moves d-none"  id="display-pokemon-info">
                     ${getPokemonMoves(i)}

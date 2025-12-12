@@ -222,7 +222,7 @@ function openPokemonDetails(i) {
   container.classList.remove("d-none");
 
   container.innerHTML = openPokemonDetailsTemplate(filteredPokemon, i);
-  setTimeout(() => displayAbout(), 0);
+  setTimeout(() => displayAbout(), 0);  
 }
 
 function closeOverlayDetails() {
