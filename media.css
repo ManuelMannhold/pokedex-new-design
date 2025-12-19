@@ -32,3 +32,23 @@
     flex-direction: column-reverse;
   }
 }
+
+@media (max-width: 480px) {
+  .pokemon-details-overlay-image {
+    width: 110px;
+    max-height: 120px;
+  }
+
+  .pokemon-details-overlay-image-container {
+    top: -55px;
+    height: 120px;
+  }
+
+  .section-overlay-card {
+    padding-top: 100px;
+  }
+
+  .pokemon-detail-header {
+    padding-bottom: 70px;
+  }
+}

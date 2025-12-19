@@ -101,7 +101,7 @@ function getPokemonTypes(i) {
       const types = pokemonTypes[j].type.name;
 
       pokeTypes += `
-                    <span class="show-pokemon-types ${types}">${types}</span>
+                    <span class="type-badge ${types}">${types}</span>
                 `;
     }
   }
@@ -285,6 +285,12 @@ function displayOverlay() {
 
 function closeOverlay() {
   document.getElementById("overlay-load-all-pokemon").classList.add("d-none");
+}
+
+function handleOverlayClick(event) {
+  if (event.target.classList.contains('card-container')) {
+    closeOverlayDetails();
+  }
 }
 
 function nextPokemon(i) {

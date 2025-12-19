@@ -17,11 +17,13 @@ function displayPokemonTemplate(pokemonData, i) {
 
 function openPokemonDetailsTemplate(filteredPokemon, i) {
   return `
+  <div class="overlay-background" onclick="handleOverlayClick(event)">
   <div class="card-container">
-
-  <span class="previous-pokemon" onclick="previousPokemon(${i})"><a href="#"><</a></span>
+  <span class="previous-pokemon" onclick="event.stopPropagation(); previousPokemon(${i})">
+  <
+</span>
     <div class="pokemon-details" id="poke-card-overlay${i}">
-    <span class="close-overlay" onclick="closeOverlayDetails()">X</span>
+    <span class="close-overlay" onclick="closeOverlayDetails()">←</span>
               <header class="pokemon-detail-header">
               <h3 class="pokemon-details-id">#000${filteredPokemon[i].id}</h3>
               <span class="pokemon-details-overlay">
@@ -59,8 +61,12 @@ function openPokemonDetailsTemplate(filteredPokemon, i) {
                   <canvas id="my-chart" width="200" height="170" class="d-none"></canvas>
                 </div>
             </div>
-            <span class="next-pokemon" onclick="nextPokemon(${i})"><a href="#">></a></span>
+            <span class="next-pokemon" onclick="event.stopPropagation(); nextPokemon(${i})">
+  >
+</span>
             </div>
              </section>
-        `;
+        </div>
+             `;
+
 }
