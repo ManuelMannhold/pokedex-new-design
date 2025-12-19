@@ -57,15 +57,15 @@
       <div class="pokeball"></div>
       <div id="loaded-pokemon"></div>
     </div>
-    <div id="overlay-load-all-pokemon" class="d-none">
-      <div class="overlay-message">
-        <span>Sicher alle Pokemon Laden?</span>
-        <span>Es wird einige Zeit dauern und den Datenverbrauch erhöhen</span>
-        <div class="buttons-overlay-message">
-          <button id="load-all" onclick="loadAllPokemon()">Ja</button>
-          <button id="stop-load" onclick="closeOverlay()">Nein</button>
-        </div>
-      </div>
+    <div id="overlay-load-all-pokemon" class="d-none overlay-background">
+  <div class="overlay-message">
+    <span class="overlay-title">Sicher alle Pokémon laden?</span>
+    <span class="overlay-text">Es wird einige Zeit dauern und den Datenverbrauch erhöhen.</span>
+    <div class="buttons-overlay-message">
+      <button id="load-all" onclick="loadAllPokemon()">Ja</button>
+      <button id="stop-load" onclick="closeOverlay()">Nein</button>
     </div>
+  </div>
+</div>
   </body>
 </html>
