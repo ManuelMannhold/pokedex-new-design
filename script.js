@@ -37,7 +37,6 @@ async function init() {
   await fetchAllPokemon();
   displayPokemon();
   toggleLoadingSpinner();
-  console.log(pokemonData);
 }
 
 async function fetchPokemon(offset, limit) {
@@ -65,7 +64,6 @@ async function fetchPokemonDetails(limit) {
     originalPokemon.push(dataPokemon);
     getPokemonTypes(pokemonData.length - 1);
     updateLiveCounter(pokemonData.length, totalPokemonToLoad);
-    console.log(pokemonData);
   }
 }
 
