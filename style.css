@@ -138,7 +138,7 @@
   font-size: 35px;
   cursor: pointer;
   transition: 0.2s ease;
-  color: #444;
+  color: white;
 }
 
 .previous-pokemon:hover,

@@ -293,6 +293,20 @@ function handleOverlayClick(event) {
   }
 }
 
+let startY = 0;
+let overlay = document.querySelector('.overlay-background');
+
+overlay.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
+
+overlay.addEventListener("touchend", e => {
+  const endY = e.changedTouches[0].clientY;
+  if (endY - startY > 80) {
+    closeOverlayDetails();
+  }
+});
+
 function nextPokemon(i) {
   if (i + 1 >= pokemonData.length) {
     i = 0;
